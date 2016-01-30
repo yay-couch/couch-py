@@ -1,4 +1,7 @@
+import socket
 from urllib import urlencode
+
+import couch.util.Util as util
 from Stream import Stream
 
 class Request(Stream):
@@ -28,7 +31,30 @@ class Request(Stream):
       return self
 
    def send(self, body=None):
-      pass
+      error = None
+      send, recv = "", ""
+      send += "GET / HTTP/%s\r\n" % (self.httpVersion)
+      send += "Host: localhost\r\n"
+      send += "Connection: close\r\n"
+      send += "Accept: application/json\r\n"
+      send += "\r\n"
+      send += self.getBody() or ""
+      try:
+         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+         sock.connect(("localhost", 5984))
+         sock.sendall(send)
+         recv = sock.recv(1024)
+      except Exception, e:
+         error = e
+      finally:
+         sock.close()
+
+      # if debug == True
+      if 1:
+         print send
+         print recv
+         if error:
+            raise error
 
    def setBody(self, body=None):
       if (body != None
