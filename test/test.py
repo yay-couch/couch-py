@@ -7,4 +7,3 @@ request.setMethod("GET")
 # prd(request)
 
 res = request.send()
-pre(res)

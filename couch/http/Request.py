@@ -60,6 +60,8 @@ class Request(Stream):
          if error:
             raise error
 
+      return recv
+
    def setBody(self, body=None):
       if (body != None
          and self.method != Request.METHOD["HEAD"]
