@@ -10,7 +10,7 @@ class Request(Stream):
    uri = None
    def __init__(self, client):
       self.type = Stream.TYPE["REQUEST"];
-      self.httpVersion = "1.1";
+      self.httpVersion = "1.0";
 
       self.client = client
 
@@ -43,7 +43,11 @@ class Request(Stream):
          sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
          sock.connect(("localhost", 5984))
          sock.sendall(send)
-         recv = sock.recv(1024)
+         while True:
+            buff = sock.recv(1024)
+            if buff == "":
+               break
+            recv += buff
       except Exception, e:
          error = e
       finally:
