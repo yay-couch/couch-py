@@ -39,9 +39,6 @@ class Response(Stream):
       if body != None:
          self.body = body
 
-   def toString(self):
-      pass
-
 Response.STATUS = {
    200: "OK",
    201: "Created",
