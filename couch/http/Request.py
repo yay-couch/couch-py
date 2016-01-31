@@ -61,8 +61,8 @@ class Request(Stream):
       finally:
          if sock: sock.close()
 
-      # if debug == True @todo
-      if 1:
+      config = self.client.couch.getConfig()
+      if "debug" in config and config["debug"] == True:
          print send
          print recv
          if errr:

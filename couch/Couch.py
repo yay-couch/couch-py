@@ -1,7 +1,9 @@
 class Couch():
    config = {}
    def __init__(self, config={}, debug=False):
-      config["debug"] = debug
+      if "debug" not in config:
+         config["debug"] = debug
+      Couch.DEBUG = config["debug"]
       self.setConfig(config)
 
    def setConfig(self, config={}):
@@ -14,4 +16,3 @@ class Couch():
 
 Couch.NAME = "Couch"
 Couch.VERSION = "1.0.0"
-Couch.DEBUG = False
