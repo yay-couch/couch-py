@@ -16,6 +16,11 @@ def prd(o, all=False):
       elif all == True:
          print "<%s>.%s = %s" % (name, attr, getattr(o, attr))
 
+# @todo dot notation support
+def dig(o, key):
+   if key in o:
+      return o[key]
+
 def getObjectName(o):
    name = "%s" % (o)
    name = name[1:name.find(" ")]
