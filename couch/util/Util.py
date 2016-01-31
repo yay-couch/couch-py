@@ -28,7 +28,7 @@ def parseHeaders(headers):
       # status line (HTTP/1.0 200 OK)
       ret["0"] = tmp.pop(0)
       for tm in tmp:
-         t = tm.split(":", 2)
+         t = tm.split(":", 1)
          if len(t) == 2:
             ret[t[0].strip()] = t[1].strip()
    return ret
