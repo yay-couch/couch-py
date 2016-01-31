@@ -68,3 +68,6 @@ class Client():
 
    def put(self, uri, uriParams={}, body=None, headers={}):
       return self.request(Request.METHOD["PUT"] +" /"+ uri, uriParams, body, headers)
+
+   def delete(self, uri, uriParams={}, headers={}):
+      return self.request(Request.METHOD["DELETE"] +" /"+ uri, uriParams, None, headers)
