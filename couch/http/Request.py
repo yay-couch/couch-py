@@ -39,7 +39,6 @@ class Request(Stream):
 
    def send(self, body=None):
       url = util.urlParse(self.uri)
-
       sock, errr = None, None
       send, recv = "", ""
       send += "%s %s?%s HTTP/%s\r\n" % (self.method, url.path, url.query, self.httpVersion)
@@ -80,6 +79,11 @@ class Request(Stream):
          self.body = body
          self.headers["Content-Length"] = len(body)
       return self
+
+   def toString(self):
+      url = util.urlParse(self.uri)
+      return super(Request, self).toString(
+         "%s %s?%s HTTP/%s\r\n" % (self.method, url.path, url.query, self.httpVersion))
 
 Request.METHOD_HEAD   = "HEAD"
 Request.METHOD_GET    = "GET"

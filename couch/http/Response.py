@@ -41,6 +41,10 @@ class Response(Stream):
       if body != None:
          self.body = body
 
+   def toString(self):
+      return super(Response, self).toString(
+         "HTTP/%s %s %s\r\n" % (self.httpVersion, self.statusCode, self.statusText))
+
 Response.STATUS = {
    200: "OK",
    201: "Created",

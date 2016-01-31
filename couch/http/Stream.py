@@ -7,9 +7,14 @@ class Stream(object):
    body = None
    error = None
    errorData = {}
-   def __init__(self, headers = {}, body = None):
+   def __init__(self, headers={}, body=None):
       self.headers = headers
       self.body = body
+      # self.error = None
+      # self.errorData = {}
+
+   def __str__(self):
+      return self.toString()
 
    def getData(self, key=None):
       if key == None:
@@ -52,8 +57,16 @@ class Stream(object):
       if key in self.errorData:
          return self.errorData[key]
 
-   def toString(self):
-      pass
+   def toString(self, firstLine):
+      ret = firstLine
+      for key, value in self.headers.items():
+         if value != None:
+            if key == "0":
+               continue
+            ret += "%s: %s\r\n" % (key, value)
+      ret += "\r\n"
+      ret += self.getBody() or ""
+      return ret
 
 Stream.TYPE = {
    "REQUEST": 1,
