@@ -71,3 +71,6 @@ class Client():
 
    def delete(self, uri, uriParams={}, headers={}):
       return self.request(Request.METHOD["DELETE"] +" /"+ uri, uriParams, None, headers)
+
+   def copy(self, uri, uriParams={}, headers={}):
+      return self.request(Request.METHOD["COPY"] +" /"+ uri, uriParams, None, headers)
