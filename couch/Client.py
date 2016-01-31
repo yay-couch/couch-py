@@ -14,7 +14,7 @@ class Client():
 
    def __init__(self, couch):
       self.couch = couch
-      config = self.couch.getConfig() or {}
+      config = self.couch.getConfig()
       if "host" in config: self.host = config.host
       if "port" in config: self.port = config.port
       if "username" in config: self.username = config.username
