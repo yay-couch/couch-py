@@ -56,3 +56,8 @@ class Client():
       if self.Response.getStatusCode() >= 200:
          self.Response.setError()
       return self.Response
+
+   def head(self, uri, uriParams={}, headers={}):
+      return self.request(Request.METHOD["HEAD"] +" /"+ uri, uriParams, None, headers)
+
+
