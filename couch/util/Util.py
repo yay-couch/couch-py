@@ -36,15 +36,20 @@ def parseHeaders(headers):
 def jsonEncode(input):
    try:
       return json.dumps(input)
-   except Exception: pass
+   except e: pass
 def jsonDecode(input):
    try:
       return json.loads(input)
-   except Exception: pass
+   except e: pass
 
 def urlQuery(query):
    return urlencode(query)
 def urlParse(url):
+   ret = {}
    if not re.match("^https?://", url):
       url = "http://"+ url
-   return urlparse(url)
+   try:
+      ret = urlparse(url)
+      ret.host = ret.hostname
+   except e: pass
+   return ret
