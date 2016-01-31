@@ -39,7 +39,7 @@ class Request(Stream):
    def send(self, body=None):
       url = util.urlParse(self.uri)
 
-      error = None
+      sock, errr = None, None
       send, recv = "", ""
       send += "%s %s?%s HTTP/%s\r\n" % (self.method, url.path, url.query, self.httpVersion)
       send += "Host: %s:%s\r\n" % (self.client.host, self.client.port)
@@ -57,16 +57,16 @@ class Request(Stream):
                break
             recv += buff
       except Exception, e:
-         error = e
+         errr = e
       finally:
-         sock.close()
+         if sock: sock.close()
 
       # if debug == True @todo
       if 1:
          print send
          print recv
-         if error:
-            raise error
+         if errr:
+            raise errr
 
       return recv
 
