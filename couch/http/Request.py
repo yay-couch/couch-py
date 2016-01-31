@@ -56,7 +56,7 @@ class Request(Stream):
             if buff == "":
                break
             recv += buff
-      except Exception, e:
+      except Exception as e:
          errr = e
       finally:
          if sock: sock.close()

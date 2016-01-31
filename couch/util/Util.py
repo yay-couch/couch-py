@@ -36,11 +36,11 @@ def parseHeaders(headers):
 def jsonEncode(input):
    try:
       return json.dumps(input)
-   except e: pass
+   except: pass
 def jsonDecode(input):
    try:
       return json.loads(input)
-   except e: pass
+   except: pass
 
 def urlQuery(query):
    return urlencode(query)
@@ -51,5 +51,5 @@ def urlParse(url):
    try:
       ret = urlparse(url)
       ret.host = ret.hostname
-   except e: pass
+   except: pass
    return ret
