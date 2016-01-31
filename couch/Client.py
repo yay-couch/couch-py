@@ -39,7 +39,7 @@ class Client():
       self.Request \
          .setMethod(m[0]) \
          .setUri(uri, uriParams)
-      for key, value in headers:
+      for key, value in headers.items():
          self.Request.setHeader(key, value)
       self.Request.setBody(body)
 
