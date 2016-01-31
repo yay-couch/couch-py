@@ -7,7 +7,7 @@ class Response(Stream):
    statusCode = 0
    statusText = ""
    def __init__(self):
-      self.type = Stream.TYPE["RESPONSE"]
+      self.type = Stream.TYPE_RESPONSE
       self.httpVersion = "1.0"
       self.headers = {}
 

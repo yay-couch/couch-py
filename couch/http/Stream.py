@@ -68,7 +68,5 @@ class Stream(object):
       ret += self.getBody() or ""
       return ret
 
-Stream.TYPE = {
-   "REQUEST": 1,
-   "RESPONSE": 2
-}
+Stream.TYPE_REQUEST  = 1
+Stream.TYPE_RESPONSE = 2

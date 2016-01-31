@@ -10,8 +10,8 @@ class Request(Stream):
    uri = None
 
    def __init__(self, client):
-      self.type = Stream.TYPE["REQUEST"];
-      self.httpVersion = "1.0";
+      self.type = Stream.TYPE_REQUEST
+      self.httpVersion = "1.0"
       self.headers = {}
       self.client = client
       self.headers["Host"] = "%s:%s" % (self.client.host, self.client.port)
