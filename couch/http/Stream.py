@@ -42,6 +42,8 @@ class Stream(object):
       if "error" in body and "reason" in body:
          self.error = "Stream Error >> error: \"%s\", reason: \"%s\"" % \
             (body["error"], body["reason"])
+         self.errorData["error"] = str(body["error"])
+         self.errorData["reason"] = str(body["reason"])
 
    def getError(self):
       return self.error
