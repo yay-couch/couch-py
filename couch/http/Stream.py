@@ -28,6 +28,14 @@ class Stream(object):
    def getBody(self):
       return self.body
 
+   def getBodyData(self, key=None):
+      bodyData = {}
+      if self.getHeader("Content-Type") == "application/json":
+         bodyData = util.jsonDecode(self.body or "")
+         if key != None:
+            return util.dig(bodyData, key)
+      return bodyData
+
    def setHeader(self, key, value=None):
       if value == None:
          if key in self.headers:
