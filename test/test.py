@@ -12,4 +12,4 @@ request.setMethod("GET")
 # print res
 
 res = client.request("GET /?a=1")
-pre(res)
+pre(jsonDecode(res.getBody())["uuid"]=="5a660f4695a5fa9ab2cd22722bc01e96")
