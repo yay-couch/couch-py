@@ -4,12 +4,21 @@ from couch.util.Util import *
 
 couch = _couch.Couch()
 client = _couch.Client(couch)
-request = _couch.http.Request(client)
-request.setMethod("GET")
+# request = _couch.http.Request(client)
+# request.setMethod("GET")
 # prd(request)
 
-# res = request.send()
-# print res
+# response = request.send()
+# print response
 
-res = client.request("GET /?a=1")
-pre(jsonDecode(res.getBody())["uuid"]=="5a660f4695a5fa9ab2cd22722bc01e96")
+# response = client.head("/?a=1")
+
+client.head("/?a=1")
+
+print
+print "---"
+print
+print(client.getRequest().toString())
+print ">>>"
+print
+print(client.getResponse().toString())
