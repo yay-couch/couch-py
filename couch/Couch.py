@@ -10,7 +10,7 @@ class Couch():
             self.config[i] = config[i]
 
    def getConfig(self):
-      self.config
+      return self.config
 
 Couch.NAME = "Couch"
 Couch.VERSION = "1.0.0"
