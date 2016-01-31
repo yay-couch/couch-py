@@ -5,6 +5,8 @@ class Stream(object):
    httpVersion = None
    headers = {}
    body = None
+   error = None
+   errorData = {}
    def __init__(self, headers = {}, body = None):
       self.headers = headers
       self.body = body
@@ -34,6 +36,19 @@ class Stream(object):
 
    def getHeaderAll(self):
       return self.headers
+
+   def setError(self, body=None):
+      body = util.jsonDecode(body or self.body or "") or {}
+      if "error" in body and "reason" in body:
+         self.error = "Stream Error >> error: \"%s\", reason: \"%s\"" % \
+            (body["error"], body["reason"])
+
+   def getError(self):
+      return self.error
+
+   def getErrorValue(self, key):
+      if key in self.errorData:
+         return self.errorData[key]
 
    def toString(self):
       pass
