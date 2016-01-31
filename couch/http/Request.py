@@ -42,9 +42,9 @@ class Request(Stream):
       sock, errr = None, None
       send, recv = "", ""
       send += "%s %s?%s HTTP/%s\r\n" % (self.method, url.path, url.query, self.httpVersion)
-      send += "Host: %s:%s\r\n" % (self.client.host, self.client.port)
-      send += "Connection: close\r\n"
-      send += "Accept: application/json\r\n"
+      for key, value in self.headers.items():
+         if value != None:
+            send += "%s: %s\r\n" % (key, value)
       send += "\r\n"
       send += self.getBody() or ""
       try:
