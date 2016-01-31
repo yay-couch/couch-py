@@ -31,6 +31,10 @@ def parseHeaders(headers):
    return ret
 
 def jsonEncode(input):
-   return json.dumps(input)
+   try:
+      return json.dumps(input)
+   except Exception: pass
 def jsonDecode(input):
-   return json.loads(input)
+   try:
+      return json.loads(input)
+   except Exception: pass
