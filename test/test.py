@@ -10,8 +10,9 @@ client = _couch.Client(couch)
 # print(client.getRequest().toString())
 # print(client.getResponse().toString())
 
-response = client.get("/?a=1")
-print response.getBody()
-print response.getBodyData()
-print response.getBodyData("uuid")
-print response.getBodyData()["uuid"]
+# response = client.get("/?a=1")
+# print response.getBody()
+# print response.getBodyData()
+# print response.getBodyData("uuid")
+# print response.getBodyData()["uuid"]
+
