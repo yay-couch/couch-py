@@ -1,3 +1,4 @@
+import json
 import pprint
 
 def pre(o):
@@ -28,3 +29,8 @@ def parseHeaders(headers):
          if len(t) == 2:
             ret[t[0].strip()] = t[1].strip()
    return ret
+
+def jsonEncode(input):
+   return json.dumps(input)
+def jsonDecode(input):
+   return json.loads(input)
