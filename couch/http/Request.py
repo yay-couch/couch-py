@@ -22,9 +22,9 @@ class Request(Stream):
 
    def setMethod(self, method):
       self.method = method.upper()
-      if (self.method != Request.METHOD["HEAD"]
-         and self.method != Request.METHOD["GET"]
-         and self.method != Request.METHOD["POST"]):
+      if (self.method != Request.METHOD_HEAD
+         and self.method != Request.METHOD_GET
+         and self.method != Request.METHOD_POST):
          self.setHeader("X-HTTP-Method-Override", self.method);
       return self
 
@@ -72,8 +72,8 @@ class Request(Stream):
 
    def setBody(self, body=None):
       if (body != None
-         and self.method != Request.METHOD["HEAD"]
-         and self.method != Request.METHOD["GET"]):
+         and self.method != Request.METHOD_HEAD
+         and self.method != Request.METHOD_GET):
          if self.getHeader("Content-Type") == "application/json":
             body = "json"
          self.body = body
@@ -85,4 +85,4 @@ Request.METHOD_GET    = "GET"
 Request.METHOD_POST   = "POST"
 Request.METHOD_PUT    = "PUT"
 Request.METHOD_DELETE = "DELETE"
-Request.METHOD_COPY   = "COPY
+Request.METHOD_COPY   = "COPY"
