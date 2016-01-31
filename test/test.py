@@ -16,3 +16,5 @@ client = _couch.Client(couch)
 # print response.getBodyData("uuid")
 # print response.getBodyData()["uuid"]
 
+# @todo
+server = _couch.Server(client)
