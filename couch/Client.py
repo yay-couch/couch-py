@@ -58,19 +58,19 @@ class Client():
       return self.Response
 
    def head(self, uri, uriParams={}, headers={}):
-      return self.request(Request.METHOD["HEAD"] +" /"+ uri, uriParams, None, headers)
+      return self.request(Request.METHOD_HEAD +" /"+ uri, uriParams, None, headers)
 
    def get(self, uri, uriParams={}, headers={}):
-      return self.request(Request.METHOD["GET"] +" /"+ uri, uriParams, None, headers)
+      return self.request(Request.METHOD_GET +" /"+ uri, uriParams, None, headers)
 
    def post(self, uri, uriParams={}, body=None, headers={}):
-      return self.request(Request.METHOD["POST"] +" /"+ uri, uriParams, body, headers)
+      return self.request(Request.METHOD_POST +" /"+ uri, uriParams, body, headers)
 
    def put(self, uri, uriParams={}, body=None, headers={}):
-      return self.request(Request.METHOD["PUT"] +" /"+ uri, uriParams, body, headers)
+      return self.request(Request.METHOD_PUT +" /"+ uri, uriParams, body, headers)
 
    def delete(self, uri, uriParams={}, headers={}):
-      return self.request(Request.METHOD["DELETE"] +" /"+ uri, uriParams, None, headers)
+      return self.request(Request.METHOD_DELETE +" /"+ uri, uriParams, None, headers)
 
    def copy(self, uri, uriParams={}, headers={}):
-      return self.request(Request.METHOD["COPY"] +" /"+ uri, uriParams, None, headers)
+      return self.request(Request.METHOD_COPY +" /"+ uri, uriParams, None, headers)
