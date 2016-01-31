@@ -1,6 +1,6 @@
 import socket
-from urllib import urlencode
 
+import couch
 import couch.util.Util as util
 from Stream import Stream
 
@@ -8,11 +8,17 @@ class Request(Stream):
    client = None
    method = None
    uri = None
+
    def __init__(self, client):
       self.type = Stream.TYPE["REQUEST"];
       self.httpVersion = "1.0";
-
       self.client = client
+      self.headers["Host"] = "%s:%s" % (self.client.host, self.client.port)
+      self.headers["Connection"] = "close"
+      self.headers["Accept"] = "application/json"
+      self.headers["Content-Type"] = "application/json"
+      self.headers["User-Agent"] = "%s/v%s (+http://github.com/qeremy/couch-py)" % \
+         (couch.Couch.NAME, couch.Couch.VERSION)
 
    def setMethod(self, method):
       self.method = method.upper()
@@ -25,23 +31,25 @@ class Request(Stream):
    def setUri(self, uri, uriParams={}):
       self.uri = uri
       if uriParams:
-         query = urlencode(uriParams)
+         query = util.urlQuery(uriParams)
          if query:
             self.uri += "?"+ query
       return self
 
    def send(self, body=None):
+      url = util.urlParse(self.uri)
+
       error = None
       send, recv = "", ""
-      send += "GET / HTTP/%s\r\n" % (self.httpVersion)
-      send += "Host: localhost\r\n"
+      send += "%s %s?%s HTTP/%s\r\n" % (self.method, url.path, url.query, self.httpVersion)
+      send += "Host: %s:%s\r\n" % (self.client.host, self.client.port)
       send += "Connection: close\r\n"
       send += "Accept: application/json\r\n"
       send += "\r\n"
       send += self.getBody() or ""
       try:
          sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-         sock.connect(("localhost", 5984))
+         sock.connect((self.client.host, self.client.port))
          sock.sendall(send)
          while True:
             buff = sock.recv(1024)
@@ -53,7 +61,7 @@ class Request(Stream):
       finally:
          sock.close()
 
-      # if debug == True
+      # if debug == True @todo
       if 1:
          print send
          print recv
