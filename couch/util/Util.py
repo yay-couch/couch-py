@@ -1,5 +1,8 @@
+import re
 import json
 import pprint
+from urllib import urlencode
+from urlparse import urlparse
 
 def pre(o):
    pprint.pprint(o)
@@ -38,3 +41,10 @@ def jsonDecode(input):
    try:
       return json.loads(input)
    except Exception: pass
+
+def urlQuery(query):
+   return urlencode(query)
+def urlParse(url):
+   if not re.match("^https?://", url):
+      url = "http://"+ url
+   return urlparse(url)
