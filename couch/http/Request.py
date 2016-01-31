@@ -26,7 +26,7 @@ class Request(Stream):
       if (self.method != Request.METHOD_HEAD
          and self.method != Request.METHOD_GET
          and self.method != Request.METHOD_POST):
-         self.setHeader("X-HTTP-Method-Override", self.method);
+         self.setHeader("X-HTTP-Method-Override", self.method)
       return self
 
    def setUri(self, uri, uriParams={}):

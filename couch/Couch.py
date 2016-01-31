@@ -11,5 +11,5 @@ class Couch():
    def getConfig(self):
       self.config
 
-Couch.NAME = "Couch";
-Couch.VERSION = "1.0.0";
+Couch.NAME = "Couch"
+Couch.VERSION = "1.0.0"
