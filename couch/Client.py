@@ -63,4 +63,5 @@ class Client():
    def get(self, uri, uriParams={}, headers={}):
       return self.request(Request.METHOD["GET"] +" /"+ uri, uriParams, None, headers)
 
-
+   def post(self, uri, uriParams={}, body=None, headers={}):
+      return self.request(Request.METHOD["POST"] +" /"+ uri, uriParams, body, headers)
