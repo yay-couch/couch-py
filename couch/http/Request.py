@@ -80,11 +80,9 @@ class Request(Stream):
          self.headers["Content-Length"] = len(self.body)
       return self
 
-Request.METHOD = {
-    "HEAD": "HEAD",
-     "GET": "GET",
-    "POST": "POST",
-     "PUT": "PUT",
-  "DELETE": "DELETE",
-    "COPY": "COPY"
-};
+Request.METHOD_HEAD   = "HEAD"
+Request.METHOD_GET    = "GET"
+Request.METHOD_POST   = "POST"
+Request.METHOD_PUT    = "PUT"
+Request.METHOD_DELETE = "DELETE"
+Request.METHOD_COPY   = "COPY
