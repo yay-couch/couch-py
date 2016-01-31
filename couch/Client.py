@@ -60,4 +60,7 @@ class Client():
    def head(self, uri, uriParams={}, headers={}):
       return self.request(Request.METHOD["HEAD"] +" /"+ uri, uriParams, None, headers)
 
+   def get(self, uri, uriParams={}, headers={}):
+      return self.request(Request.METHOD["GET"] +" /"+ uri, uriParams, None, headers)
+
 
