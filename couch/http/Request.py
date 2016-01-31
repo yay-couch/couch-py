@@ -75,9 +75,9 @@ class Request(Stream):
          and self.method != Request.METHOD_HEAD
          and self.method != Request.METHOD_GET):
          if self.getHeader("Content-Type") == "application/json":
-            body = "json"
+            body = util.jsonEncode(body)
          self.body = body
-         self.headers["Content-Length"] = len(self.body)
+         self.headers["Content-Length"] = len(body)
       return self
 
 Request.METHOD_HEAD   = "HEAD"
