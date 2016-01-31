@@ -7,7 +7,8 @@ class Response(Stream):
    statusCode = 0
    statusText = ""
    def __init__(self):
-      pass
+      self.type = Stream.TYPE["RESPONSE"];
+      self.httpVersion = "1.0";
 
    def setStatus(self, status):
       r = re.match("^HTTP/(\d+\.\d+)\s+(\d+)\s+(.+)", status)
