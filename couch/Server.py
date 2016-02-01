@@ -20,3 +20,9 @@ class Server():
 
    def getDatabaseUpdates(self, query=None):
       return self.client.get("/_db_updates", query).getBodyData()
+
+   def getLogs(self, query=None):
+      return self.client.get("/_log", query, {
+         "Content-Type": None,
+         "Accept": "text/plain",
+      }).getBody()
