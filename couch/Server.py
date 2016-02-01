@@ -8,3 +8,6 @@ class Server():
 
    def info(self, key=None):
       return self.client.get("/").getBodyData(key)
+
+   def version(self):
+      return self.info("version")
