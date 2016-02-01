@@ -33,7 +33,7 @@ class Server():
    def getUuid(self, count=1):
       uuids = self.getUuids(1)
       if len(uuids):
-         return uuids.pop()
+         return uuids[0]
 
    def getUuids(self, count=1):
       return self.client.get("/_uuids/", {"count": count}).getBodyData("uuids")
