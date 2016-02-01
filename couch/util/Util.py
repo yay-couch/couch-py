@@ -17,12 +17,13 @@ def prd(o, all=False):
          print "<%s>.%s = %s" % (name, attr, getattr(o, attr))
 
 def dig(key, array):
-   keys = key.split(".")
-   key  = keys.pop(0)
-   if len(keys) > 0:
-      return dig(".".join(keys), array[key])
-   return array[key]
-
+   try:
+      keys = key.split(".")
+      key  = keys.pop(0)
+      if len(keys) > 0:
+         return dig(".".join(keys), array[key])
+      return array[key]
+   except: pass
 
 def getObjectName(o):
    name = "%s" % (o)
