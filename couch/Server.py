@@ -26,3 +26,6 @@ class Server():
          "Content-Type": None,
          "Accept": "text/plain",
       }).getBody()
+
+   def getStats(self, path=""):
+      return self.client.get("/_stats/"+ path).getBodyData()
