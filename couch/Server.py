@@ -29,3 +29,6 @@ class Server():
 
    def getStats(self, path=""):
       return self.client.get("/_stats/"+ path).getBodyData()
+
+   def getUuids(self, count=1):
+      return self.client.get("/_uuids/", {"count": count}).getBodyData()
