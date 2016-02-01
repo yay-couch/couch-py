@@ -14,3 +14,6 @@ class Server():
 
    def getActiveTasks(self):
       return self.client.get("/_active_tasks").getBodyData()
+
+   def getAllDatabases(self):
+      return self.client.get("/_all_dbs").getBodyData()
