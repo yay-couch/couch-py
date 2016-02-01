@@ -17,9 +17,9 @@ def prd(o, all=False):
          print "<%s>.%s = %s" % (name, attr, getattr(o, attr))
 
 # @todo dot notation support
-def dig(o, key):
-   if key in o:
-      return o[key]
+def dig(key, array):
+   if key in array:
+      return array[key]
 
 def getObjectName(o):
    name = "%s" % (o)
