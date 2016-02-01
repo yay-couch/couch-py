@@ -11,3 +11,6 @@ class Server():
 
    def version(self):
       return self.info("version")
+
+   def getActiveTasks(self):
+      return self.client.get("/_active_tasks").getBodyData()
