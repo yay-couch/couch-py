@@ -16,11 +16,6 @@ class Stream(object):
    def __str__(self):
       return self.toString()
 
-   def getData(self, key=None):
-      if key == None:
-         return self.body
-      return util.dig(key, self.body)
-
    def setBody(self, body=None):
       if self.__class__.__name__ == "Stream":
          raise Exception("You should re-define [<OBJECT>].setBody(self, body=None) method!")
