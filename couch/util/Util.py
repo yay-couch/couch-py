@@ -16,10 +16,13 @@ def prd(o, all=False):
       elif all == True:
          print "<%s>.%s = %s" % (name, attr, getattr(o, attr))
 
-# @todo dot notation support
 def dig(key, array):
-   if key in array:
-      return array[key]
+   keys = key.split(".")
+   key  = keys.pop(0)
+   if len(keys) > 0:
+      return dig(".".join(keys), array[key])
+   return array[key]
+
 
 def getObjectName(o):
    name = "%s" % (o)
