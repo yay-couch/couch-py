@@ -37,3 +37,8 @@ class Server():
 
    def getUuids(self, count=1):
       return self.client.get("/_uuids/", {"count": count}).getBodyData("uuids")
+
+   def replicate(self, query={}):
+      if "source" not in query or "target" not in query:
+         raise Exception("Both source & target required!")
+      return self.client.post("/_replicate", None, query).getBodyData()
