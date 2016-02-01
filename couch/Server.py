@@ -5,3 +5,6 @@ class Server():
 
    def ping(self):
       return (200 == self.client.head("/").getStatusCode())
+
+   def info(self, key=None):
+      return self.client.get("/").getBodyData(key)
