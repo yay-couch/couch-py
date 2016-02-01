@@ -42,3 +42,6 @@ class Server():
       if "source" not in query or "target" not in query:
          raise Exception("Both source & target required!")
       return self.client.post("/_replicate", None, query).getBodyData()
+
+   def restart(self):
+      return (202 == self.client.post("/_restart").getStatusCode())
