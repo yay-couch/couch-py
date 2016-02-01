@@ -28,7 +28,7 @@ class Stream(object):
       if self.getHeader("Content-Type") == "application/json":
          bodyData = util.jsonDecode(self.body or "")
          if key != None:
-            return util.dig(bodyData, key)
+            return util.dig(key, bodyData)
       return bodyData
 
    def setHeader(self, key, value=None):
