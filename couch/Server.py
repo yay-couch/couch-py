@@ -17,3 +17,6 @@ class Server():
 
    def getAllDatabases(self):
       return self.client.get("/_all_dbs").getBodyData()
+
+   def getDatabaseUpdates(self, query=None):
+      return self.client.get("/_db_updates", query).getBodyData()
