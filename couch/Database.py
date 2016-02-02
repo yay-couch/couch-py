@@ -1,9 +1,12 @@
+import couch
 import couch.util.Util as util
 
 class Database():
    client = None
    name = None
    def __init__(self, client, name):
+      if not isinstance(client, couch.Client):
+         raise Exception("'client' arg must be instance of couch.Client")
       self.client = client
       self.name = name
 
@@ -41,3 +44,4 @@ class Database():
       if not keys:
          return self.client.get(self.name +"/_all_docs", query)
       return self.client.post(self.name +"/_all_docs", query, {"keys": keys}).getBodyData()
+
