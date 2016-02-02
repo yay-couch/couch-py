@@ -79,6 +79,12 @@ class Database():
          docs.append(document)
          return self.client.post(self.name +"/_bulk_docs", None, {"docs": docs}).getBodyData()
 
+   def deleteDocument(self, document):
+      data = self.deleteDocumentAll([document])
+      try:
+         return data[0]
+      except: pass
+
    def deleteDocumentAll(self, documents):
       docs = []
       for document in documents:
