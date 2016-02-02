@@ -135,11 +135,10 @@ class Database():
          {"admins":admins, "members":members}).getBodyData()
 
    def purge(self, docId, docRevs):
-      body = {}
-      body[docId] = docRevs
-      return self.client.post(self.name +"/_purge", None, body).getBodyData()
+      return self.client.post(self.name +"/_purge", None,
+         {docId: docRevs}).getBodyData()
 
    def getMissingRevisions(self, docId, docRevs):
-      body = {}
-      body[docId] = docRevs
-      return self.client.post(self.name +"/_missing_revs", None, body).getBodyData()
+      return self.client.post(self.name +"/_missing_revs", None,
+         {docId: docRevs}).getBodyData()
+
