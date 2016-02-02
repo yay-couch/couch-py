@@ -1,7 +1,7 @@
 import re
 import json
 import pprint
-from urllib import urlencode
+import urllib
 from urlparse import urlparse
 
 def pre(o):
@@ -51,8 +51,18 @@ def jsonDecode(input):
       return json.loads(input)
    except: pass
 
-def urlQuery(query):
-   return urlencode(query)
+def urlQuery(q):
+   qt = type(q)
+   if qt is str:
+      return urllib.urlencode(q)
+   elif qt is dict:
+      qs = []
+      for key, value in q.items():
+         if value is True or value is False:
+            value = "true" if value else "false"
+         qs.append("%s=%s" % (urllib.quote_plus(key), urllib.quote_plus(value)))
+      return "&".join(qs)
+
 def urlParse(url):
    ret = {}
    if not re.match("^https?://", url):
