@@ -50,3 +50,9 @@ class Server():
       path = "%s/%s" % (section, key)
       return self.client.get("/_config/"+ path).getBodyData()
 
+   def setConfig(self, section, key, value):
+      path = "%s/%s" % (section, key)
+      response = self.client.put("/_config/"+ path, None, value)
+      if 200 == response.getStatusCode():
+         return response.getBodyData()
+      return False
