@@ -146,3 +146,5 @@ class Database():
       return self.client.post(self.name +"/_revs_diff", None,
          {docId: docRevs}).getBodyData()
 
+   def getRevisionLimit(self):
+      return self.client.get(self.name +"/_revs_limit").getBodyData()
