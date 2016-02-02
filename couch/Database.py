@@ -39,6 +39,7 @@ class Database():
       except: pass
 
    def getDocumentAll(self, query={}, keys=[]):
+      query = query or {}
       if "include_docs" not in query:
          query["include_docs"] = True
       if not keys:
@@ -98,11 +99,11 @@ class Database():
    def getChanges(self, query={}, docIds=[]):
       if not docIds:
          return self.client.get(self.name +"/_changes", query).getBodyData()
-      query = util.ifNot(query, {})
+      query = query or {}
       if "filter" not in query:
          query["filter"] = "_doc_ids"
       return self.client.post(self.name +"/_changes", query, {"doc_ids": docIds}).getBodyData()
 
    def compact(self, ddoc=None):
-      ddoc = util.ifNot(query, {})
+      ddoc = ddoc or ""
       return self.client.post(self.name +"/_compact/"+ ddoc).getBodyData()
