@@ -1,3 +1,5 @@
+import couch.util.Util as util
+
 class Database():
    client = None
    name = None
@@ -22,4 +24,13 @@ class Database():
          "source"       : self.name,
          "target"       : target,
          "create_target": targetCreate,
-      }).getBodyData();
+      }).getBodyData()
+
+   def getDocument(self, key):
+      data = self.client.get(self.name + "/_all_docs", {
+         "include_docs": True,
+         "key"         : "\"%s\"" % util.quote(key),
+      }).getBodyData()
+      try:
+         return data["rows"][0]
+      except: pass
