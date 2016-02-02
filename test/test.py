@@ -48,3 +48,13 @@ database = _couch.Database(client, "foo")
 # print database.getDocumentAll()
 # print database.getDocumentAll({"limit":1})
 # print database.getDocumentAll({}, ["0f1eb3ba90772b64aee2f44b3c00055b"])
+# document = _couch.Document()
+# print database.createDocumentAll([document])
+# print database.createDocument({"title":"The Book 1", "price":1.5})
+# print database.createDocumentAll([{"title":"The Book 1", "price":1.5}])
+# print database.updateDocument({"title":"The Book 1.1", "price":1.5,
+#    "_id":"83b921545793787b051dd356410014c2", "_rev":"2-dc87c52dcb43ae2449b9a8070229b2ce"})
+# print database.updateDocumentAll([{"title":"The Book 1.1", "price":1.5,
+   # "_id":"83b921545793787b051dd356410014c2", "_rev":"1-d8dbc8aba800e04fa1d90059df208bbb"}])
+# print database.deleteDocument({"_id":"83b921545793787b051dd356410014c2", "_rev":"3-839b4a1b168b742015f97adff9e24100"})
+# print database.deleteDocumentAll([{"_id":"83b921545793787b051dd356410014c2", "_rev":"3-839b4a1b168b742015f97adff9e24100"}])
