@@ -45,6 +45,12 @@ class Database():
          return self.client.get(self.name +"/_all_docs", query)
       return self.client.post(self.name +"/_all_docs", query, {"keys": keys}).getBodyData()
 
+   def createDocument(self, document):
+      data = self.createDocumentAll([document])
+      try:
+         return data[0]
+      except: pass
+
    def createDocumentAll(self, documents):
       docs = []
       for document in documents:
