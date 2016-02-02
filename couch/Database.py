@@ -16,3 +16,10 @@ class Database():
 
    def remove(self):
       return (True == self.client.delete(self.name).getBodyData("ok"))
+
+   def replicate(self, target, targetCreate=True):
+      return self.client.post("/_replicate", None, {
+         "source"       : self.name,
+         "target"       : target,
+         "create_target": targetCreate,
+      }).getBodyData();
