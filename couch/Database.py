@@ -94,3 +94,10 @@ class Database():
          document["_deleted"] = True
          docs.append(document)
       return self.updateDocumentAll(docs)
+
+   def getChanges(self, query={}, docIds=[]):
+      if not docIds:
+         return self.client.get(self.name +"/_changes", query).getBodyData()
+      if "filter" not in query:
+         query["filter"] = "_doc_ids"
+      return self.client.post(self.name +"/_changes", query, {"doc_ids": docIds}).getBodyData()
