@@ -142,3 +142,7 @@ class Database():
       return self.client.post(self.name +"/_missing_revs", None,
          {docId: docRevs}).getBodyData()
 
+   def getMissingRevisionsDiff(self, docId, docRevs):
+      return self.client.post(self.name +"/_revs_diff", None,
+         {docId: docRevs}).getBodyData()
+
