@@ -44,7 +44,9 @@ class Database():
          query["include_docs"] = True
       if not keys:
          return self.client.get(self.name +"/_all_docs", query)
-      return self.client.post(self.name +"/_all_docs", query, {"keys": keys}).getBodyData()
+      else:
+         return self.client.post(self.name +"/_all_docs", query,
+            {"keys": keys}).getBodyData()
 
    def createDocument(self, document):
       data = self.createDocumentAll([document])
@@ -61,7 +63,8 @@ class Database():
          if "_rev" in document:     del document["_rev"]
          if "_deleted" in document: del document["_deleted"]
          docs.append(document)
-      return self.client.post(self.name +"/_bulk_docs", None, {"docs": docs}).getBodyData()
+      return self.client.post(self.name +"/_bulk_docs", None,
+         {"docs": docs}).getBodyData()
 
    def updateDocument(self, document):
       data = self.updateDocumentAll([document])
@@ -78,7 +81,8 @@ class Database():
          if "_id" not in document or "_rev" not in document:
             raise Exception("Both _id & _rev fields are required!")
          docs.append(document)
-         return self.client.post(self.name +"/_bulk_docs", None, {"docs": docs}).getBodyData()
+         return self.client.post(self.name +"/_bulk_docs", None,
+            {"docs": docs}).getBodyData()
 
    def deleteDocument(self, document):
       data = self.deleteDocumentAll([document])
@@ -102,7 +106,8 @@ class Database():
       query = query or {}
       if "filter" not in query:
          query["filter"] = "_doc_ids"
-      return self.client.post(self.name +"/_changes", query, {"doc_ids": docIds}).getBodyData()
+      return self.client.post(self.name +"/_changes", query,
+         {"doc_ids": docIds}).getBodyData()
 
    def compact(self, ddoc=None):
       ddoc = ddoc or ""
@@ -113,3 +118,5 @@ class Database():
 
    def viewCleanup(self):
       return self.client.post(self.name +"/_view_cleanup").getBodyData()
+
+
