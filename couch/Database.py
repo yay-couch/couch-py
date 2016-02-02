@@ -7,3 +7,6 @@ class Database():
 
    def ping(self):
       return (200 == self.client.head(self.name).getStatusCode())
+
+   def info(self, key=None):
+      return self.client.get(self.name).getBodyData(key)
