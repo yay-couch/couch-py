@@ -27,10 +27,17 @@ class Database():
       }).getBodyData()
 
    def getDocument(self, key):
-      data = self.client.get(self.name + "/_all_docs", {
+      data = self.client.get(self.name +"/_all_docs", {
          "include_docs": True,
          "key"         : "\"%s\"" % util.quote(key),
       }).getBodyData()
       try:
          return data["rows"][0]
       except: pass
+
+   def getDocumentAll(self, query={}, keys=[]):
+      if "include_docs" not in query:
+         query["include_docs"] = True
+      if not keys:
+         return self.client.get(self.name +"/_all_docs", query)
+      return self.client.post(self.name +"/_all_docs", query, {"keys": keys}).getBodyData()
