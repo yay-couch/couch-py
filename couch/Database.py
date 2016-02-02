@@ -98,10 +98,11 @@ class Database():
    def getChanges(self, query={}, docIds=[]):
       if not docIds:
          return self.client.get(self.name +"/_changes", query).getBodyData()
+      query = util.ifNot(query, {})
       if "filter" not in query:
          query["filter"] = "_doc_ids"
       return self.client.post(self.name +"/_changes", query, {"doc_ids": docIds}).getBodyData()
 
    def compact(self, ddoc=None):
-      ddoc = util.ifNone(ddoc, "")
+      ddoc = util.ifNot(query, {})
       return self.client.post(self.name +"/_compact/"+ ddoc).getBodyData()
