@@ -56,3 +56,10 @@ class Server():
       if 200 == response.getStatusCode():
          return response.getBodyData()
       return False
+
+   def removeConfig(self, section, key):
+      path = "%s/%s" % (section, key)
+      response = self.client.delete("/_config/"+ path)
+      if 200 == response.getStatusCode():
+         return response.getBodyData()
+      return False
