@@ -47,4 +47,6 @@ class Server():
       return (202 == self.client.post("/_restart").getStatusCode())
 
    def getConfig(self, section="", key=""):
-      return self.client.get("/_config/%s/%s" % (section, key)).getBodyData()
+      path = "%s/%s" % (section, key)
+      return self.client.get("/_config/"+ path).getBodyData()
+
