@@ -58,8 +58,11 @@ def urlQuery(q):
    elif qt is dict:
       qs = []
       for key, value in q.items():
-         if value is True or value is False:
-            value = "true" if value else "false"
+         vt = type(value)
+         if vt is int:
+            value = str(value)
+         elif vt is bool:
+            value = str(value).lower()
          qs.append("%s=%s" % (urllib.quote_plus(key), urllib.quote_plus(value)))
       return "&".join(qs)
 
