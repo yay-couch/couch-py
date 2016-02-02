@@ -78,3 +78,8 @@ def urlParse(url):
 
 def quote(input):
    return input.replace("\"", "%22")
+
+def ifNone(self, input, defval):
+   if input is None:
+      input = defval
+   return defval
