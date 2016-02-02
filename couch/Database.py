@@ -122,3 +122,6 @@ class Database():
    def viewTemp(self, map, reduce=None):
       return self.client.post(self.name +"/_temp_view", None,
          {"map":map, "reduce":reduce}).getBodyData()
+
+   def getSecurity(self):
+      return self.client.get(self.name +"/_security").getBodyData()
