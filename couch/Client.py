@@ -45,7 +45,7 @@ class Client():
 
       result = self.Request.send()
       if result != "":
-         headers, body = result.split("\r\n\r\n", 2)
+         headers, body = result.split("\r\n\r\n", 1)
          headers = util.parseHeaders(headers)
          if headers:
             for key, value in headers.items():
