@@ -125,3 +125,11 @@ class Database():
 
    def getSecurity(self):
       return self.client.get(self.name +"/_security").getBodyData()
+
+   def setSecurity(self, admins={}, members={}):
+      admins, members = admins or {}, members or {}
+      if ("names" not in admins or "roles" not in admins
+         or "names" not in members or "roles" not in members):
+         raise Exception("Specify admins and/or members with names=>roles fields!")
+      return self.client.put(self.name +"/_security", None,
+         {"admins":admins, "members":members}).getBodyData()
