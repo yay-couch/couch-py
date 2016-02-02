@@ -13,3 +13,6 @@ class Database():
 
    def create(self):
       return (True == self.client.put(self.name).getBodyData("ok"))
+
+   def remove(self):
+      return (True == self.client.delete(self.name).getBodyData("ok"))
