@@ -62,3 +62,6 @@ def urlParse(url):
       ret.host = ret.hostname
    except: pass
    return ret
+
+def quote(input):
+   return input.replace("\"", "%22")
