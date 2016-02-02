@@ -110,3 +110,6 @@ class Database():
 
    def ensureFullCommit(self):
       return self.client.post(self.name +"/_ensure_full_commit").getBodyData()
+
+   def viewCleanup(self):
+      return self.client.post(self.name +"/_view_cleanup").getBodyData()
