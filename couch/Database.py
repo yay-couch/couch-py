@@ -10,3 +10,6 @@ class Database():
 
    def info(self, key=None):
       return self.client.get(self.name).getBodyData(key)
+
+   def create(self):
+      return (True == self.client.put(self.name).getBodyData("ok"))
