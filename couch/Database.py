@@ -107,3 +107,6 @@ class Database():
    def compact(self, ddoc=None):
       ddoc = ddoc or ""
       return self.client.post(self.name +"/_compact/"+ ddoc).getBodyData()
+
+   def ensureFullCommit(self):
+      return self.client.post(self.name +"/_ensure_full_commit").getBodyData()
