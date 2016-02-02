@@ -46,8 +46,8 @@ class Stream(object):
       return self.headers
 
    def setError(self, body=None):
-      body = util.jsonDecode(body or self.body or "") or {}
-      if "error" in body and "reason" in body:
+      body = util.jsonDecode(body or self.body or "")
+      if type(body) is dict and "error" in body and "reason" in body:
          self.error = "Stream Error >> error: \"%s\", reason: \"%s\"" % \
             (body["error"], body["reason"])
          self.errorData["error"] = str(body["error"])
