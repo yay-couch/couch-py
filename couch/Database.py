@@ -62,6 +62,12 @@ class Database():
          docs.append(document)
       return self.client.post(self.name +"/_bulk_docs", None, {"docs": docs}).getBodyData()
 
+   def updateDocument(self, document):
+      data = self.updateDocumentAll([document])
+      try:
+         return data[0]
+      except: pass
+
    def updateDocumentAll(self, documents):
       docs = []
       for document in documents:
