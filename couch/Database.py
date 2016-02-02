@@ -73,7 +73,18 @@ class Database():
       for document in documents:
          if isinstance(document, couch.Document):
             document = document.getData()
+         # these are required params
          if "_id" not in document or "_rev" not in document:
             raise Exception("Both _id & _rev fields are required!")
          docs.append(document)
          return self.client.post(self.name +"/_bulk_docs", None, {"docs": docs}).getBodyData()
+
+   def deleteDocumentAll(self, documents):
+      docs = []
+      for document in documents:
+         if isinstance(document, couch.Document):
+            document = document.getData()
+         # just add "_deleted" param into document
+         document["_deleted"] = True
+         docs.append(document)
+      return self.updateDocumentAll(docs)
