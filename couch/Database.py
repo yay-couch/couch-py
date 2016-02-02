@@ -119,4 +119,6 @@ class Database():
    def viewCleanup(self):
       return self.client.post(self.name +"/_view_cleanup").getBodyData()
 
-
+   def viewTemp(self, map, reduce=None):
+      return self.client.post(self.name +"/_temp_view", None,
+         {"map":map, "reduce":reduce}).getBodyData()
