@@ -133,3 +133,8 @@ class Database():
          raise Exception("Specify admins and/or members with names=>roles fields!")
       return self.client.put(self.name +"/_security", None,
          {"admins":admins, "members":members}).getBodyData()
+
+   def purge(self, docId, docRevs):
+      body = {}
+      body[docId] = docRevs
+      return self.client.post(self.name +"/_purge", None, data).getBodyData()
