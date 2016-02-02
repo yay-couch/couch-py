@@ -148,3 +148,6 @@ class Database():
 
    def getRevisionLimit(self):
       return self.client.get(self.name +"/_revs_limit").getBodyData()
+
+   def setRevisionLimit(self, limit):
+      return self.client.put(self.name +"/_revs_limit", None, limit).getBodyData()
