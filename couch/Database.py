@@ -61,3 +61,13 @@ class Database():
          if "_deleted" in document: del document["_deleted"]
          docs.append(document)
       return self.client.post(self.name +"/_bulk_docs", None, {"docs": docs}).getBodyData()
+
+   def updateDocumentAll(self, documents):
+      docs = []
+      for document in documents:
+         if isinstance(document, couch.Document):
+            document = document.getData()
+         if "_id" not in document or "_rev" not in document:
+            raise Exception("Both _id & _rev fields are required!")
+         docs.append(document)
+         return self.client.post(self.name +"/_bulk_docs", None, {"docs": docs}).getBodyData()
