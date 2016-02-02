@@ -83,6 +83,4 @@ def ifNot(input, defval):
    return defval if not input else input
 
 def ifNone(input, defval):
-   if input is None:
-      input = defval
-   return defval
+   return defval if input is None else input
