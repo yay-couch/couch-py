@@ -45,3 +45,13 @@ class Database():
          return self.client.get(self.name +"/_all_docs", query)
       return self.client.post(self.name +"/_all_docs", query, {"keys": keys}).getBodyData()
 
+   def createDocumentAll(self, documents):
+      docs = []
+      for document in documents:
+         if isinstance(document, couch.Document):
+            document = document.getData()
+         # this is create method, no update allowed
+         if "_rev" in document:     del document["_rev"]
+         if "_deleted" in document: del document["_deleted"]
+         docs.append(document)
+      return self.client.post(self.name +"/_bulk_docs", None, {"docs": docs}).getBodyData()
