@@ -137,4 +137,9 @@ class Database():
    def purge(self, docId, docRevs):
       body = {}
       body[docId] = docRevs
-      return self.client.post(self.name +"/_purge", None, data).getBodyData()
+      return self.client.post(self.name +"/_purge", None, body).getBodyData()
+
+   def getMissingRevisions(self, docId, docRevs):
+      body = {}
+      body[docId] = docRevs
+      return self.client.post(self.name +"/_missing_revs", None, body).getBodyData()
