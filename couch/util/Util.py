@@ -1,7 +1,7 @@
 import re
-import json
 import pprint
 import urllib
+import json
 from urlparse import urlparse
 
 def pre(o):
@@ -67,14 +67,14 @@ def urlQuery(q):
       return "&".join(qs)
 
 def urlParse(url):
-   ret = {}
    if not re.match("^https?://", url):
       url = "http://"+ url
    try:
       ret = urlparse(url)
       ret.host = ret.hostname
-   except: pass
-   return ret
+      return ret
+   except:
+      return {}
 
 def quote(input):
    return input.replace("\"", "%22")
