@@ -1,7 +1,7 @@
 import re
 import pprint
 import urllib
-import json
+import json, base64
 from urlparse import urlparse
 
 def pre(o):
@@ -49,6 +49,15 @@ def jsonEncode(input):
 def jsonDecode(input):
    try:
       return json.loads(input)
+   except: pass
+
+def base64Encode(input):
+   try:
+      return base64.b64encode(input)
+   except: pass
+def base64Decode(input):
+   try:
+      return base64.b64decode(input)
    except: pass
 
 def urlQuery(q):
