@@ -56,7 +56,7 @@ class Request(Stream):
          sock.sendall(send)
          while True:
             buff = sock.recv(1024)
-            if buff == "":
+            if buff == "": # eof
                break
             recv += buff
       except Exception as e:
