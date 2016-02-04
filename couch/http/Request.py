@@ -20,6 +20,9 @@ class Request(Stream):
       self.headers["Content-Type"] = "application/json"
       self.headers["User-Agent"] = "%s/v%s (+http://github.com/qeremy/couch-py)" % \
          (couch.Couch.NAME, couch.Couch.VERSION)
+      if self.client.username and self.client.password:
+         self.headers["Authorization"] = "Basic "+ \
+            util.base64Encode(self.client.username +":"+ self.client.password)
 
    def setMethod(self, method):
       self.method = method.upper()
