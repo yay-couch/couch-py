@@ -101,3 +101,5 @@ class Document(object):
             return True
       return False
 
+   def isExists(self):
+      return self.ping(200, 304)
