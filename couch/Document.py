@@ -12,6 +12,10 @@ class Document():
          self.setDatabase(database)
       if data:
          self.setData(data)
+   def __setattr__(self, key, value):
+      self.setData({key: value})
+   def __getattr__(self, key):
+      self.getData(key)
 
    def setDatabase(self, database):
       if not isinstance(database, couch.Database):
