@@ -59,8 +59,8 @@ def base64Decode(input):
    except: pass
 
 def urlEncode(input):
-   if hasattr(input, "toString") and callable(input.toString):
-      input = input.toString()
+   if hasattr(input, "__str__") and callable(input.__str__):
+      input = input.__str__()
    return urllib.quote_plus(input)
 def urlDecode(input):
    return urllib.unquote_plus(input)
