@@ -70,3 +70,8 @@ database = _couch.Database(client, "foo")
 # print database.getMissingRevisionsDiff("7ee9cdd673b109e030cec8c6f10105bc", ["3-839b4a1b168b742015f97adff9e24100"])
 # print database.getRevisionLimit()
 # print database.setRevisionLimit(1001)
+
+# print _couch.Uuid.generate(_couch.Uuid.TIMESTAMP)
+# print _couch.Uuid.generate(_couch.Uuid.HEX_8)
+# print _couch.Uuid.generate(_couch.Uuid.HEX_32)
+# print _couch.Uuid.generate(_couch.Uuid.HEX_40)
