@@ -8,7 +8,7 @@ def pre(o):
    pprint.pprint(o)
 
 def prd(o, all=False):
-   name = getObjectName(o)
+   name = o.__class__
    for attrName in dir(o):
       # show only attrs
       attrValue = getattr(o, attrName)
@@ -27,11 +27,6 @@ def dig(key, array):
          return dig(".".join(keys), array[key])
       return array[key]
    except: pass
-
-def getObjectName(o):
-   name = "%s" % (o)
-   name = name[1:name.find(" ")]
-   return name
 
 def parseHeaders(headers):
    ret = {}
