@@ -17,6 +17,8 @@ def prd(o, all=False):
          print "<%s>.%s = %s" % (name, attr, getattr(o, attr))
 
 def dig(key, array):
+   if key in array:
+      return array[key]
    try:
       keys = key.split(".")
       key  = keys.pop(0)
