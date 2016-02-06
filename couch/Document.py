@@ -18,7 +18,7 @@ class Document():
          raise Exception("'database' arg must be instance of couch.Database")
       self.database = database
 
-   def geetDatabase(self):
+   def getDatabase(self):
       return self.database
 
    def setId(self, id):
