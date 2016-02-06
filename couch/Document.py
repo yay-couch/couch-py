@@ -106,7 +106,7 @@ class Document(object):
       if not self.rev:
          raise Exception("_rev field could not be empty!")
       return self.ping(304)
-   def find(self, query={}):
+   def find(self, query = {}):
       if not self.id:
          raise Exception("_id field is could not be empty!")
       query = query or {}
@@ -118,3 +118,13 @@ class Document(object):
       return util.dig("_revisions", self.find({"revs": True}))
    def findRevisionsExtended(self):
       return util.dig("_revs_info", self.find({"revs_info": True}))
+   def findAttachments(self, attEncInfo = False, attsSince = []):
+      query = {}
+      query["attachments"] = True
+      query["att_encoding_info"] = attEncInfo
+      if attsSince:
+         attsSinceArray = []
+         for attsSinceValue in attsSince:
+            attsSinceArray.append('"%s"' % util.quote(attsSinceValue))
+         query["atts_since"] = "[%s]" % ",".join(attsSinceArray)
+      return util.dig("_attachments", self.find(query))
