@@ -8,6 +8,8 @@ class Uuid():
       if value == True:
          value = generate(Uuid.HEX_32)
       self.setValue(value)
+   def __str__(self):
+      return self.value
 
    def setValue(self, value):
       self.value = value
