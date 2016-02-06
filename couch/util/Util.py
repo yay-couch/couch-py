@@ -58,6 +58,13 @@ def base64Decode(input):
       return base64.b64decode(input)
    except: pass
 
+def urlEncode(input):
+   if hasattr(input, "toString") and callable(input.toString):
+      input = input.toString()
+   return urllib.quote_plus(input)
+def urlDecode(input):
+   return urllib.unquote_plus(input)
+
 def urlQuery(q):
    qt = type(q)
    if qt is str:
