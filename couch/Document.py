@@ -4,7 +4,7 @@ import couch.util.Util as util
 class Document():
    id, rev = None, None
    deleted = False
-   attachments = []
+   attachments = {}
    database = None
    data = {}
    def __init__(self, database=None, data={}):
