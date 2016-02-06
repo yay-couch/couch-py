@@ -93,8 +93,8 @@ class Document(object):
       headers = {}
       if self.rev != None:
          headers["If-None-Match"] = '"%s"' % (self.rev)
-      response = self.database.client.head(
-         self.database.name +"/"+ util.urlEncode(self.id), None, headers)
+      response = self.database.client.head(self.database.name +"/"+
+         util.urlEncode(self.id), None, headers)
       responseStatusCode = response.getStatusCode()
       for statusCode in (args or [200]):
          if statusCode == responseStatusCode:
@@ -106,3 +106,11 @@ class Document(object):
       if not self.rev:
          raise Exception("_rev field could not be empty!")
       return self.ping(304)
+   def find(self, query={}):
+      if not self.id:
+         raise Exception("_id field is could not be empty!")
+      query = query or {}
+      if "rev" not in query and self.rev:
+         query["rev"] = self.rev
+      return self.database.client.get(self.database.name +"/"+
+         util.urlEncode(self.id), query).getBodyData()
