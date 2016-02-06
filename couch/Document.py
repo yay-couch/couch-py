@@ -55,15 +55,19 @@ class Document(object):
       if "_attachments" not in self.data:
          self.data["_attachments"] = {}
       self.attachments[attachment.fileName] = \
-         self.data['_attachments'][attachment.fileName] = attachment;
+         self.data["_attachments"][attachment.fileName] = attachment
+
    def getAttachment(self, name):
       if name in self.attachments[name]:
          return self.attachments[name]
+
    def getAttachmentAll(self):
       return self.attachments
+
    def unsetAttachment(self, name):
       if name in self.attachments[name]:
          del self.attachments[name]
+
    def unsetAttachmentAll(self):
       self.attachments = {}
 
@@ -82,3 +86,18 @@ class Document(object):
       if key != None:
          return util.dig(key, self.data)
       return self.data
+
+   def ping(self, *args):
+      if not self.id:
+         raise Exception("_id field is could not be empty!")
+      headers = {}
+      if self.rev != None:
+         headers["If-None-Match"] = '"%s"' % (self.rev)
+      response = self.database.client.head(
+         self.database.name +"/"+ util.urlEncode(self.id), None, headers)
+      responseStatusCode = response.getStatusCode()
+      for statusCode in (args or [200]):
+         if statusCode == responseStatusCode:
+            return True
+      return False
+
