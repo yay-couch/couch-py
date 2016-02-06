@@ -1,8 +1,9 @@
 import couch
 import couch.util.Util as util
 
-class Document():
-   id, rev = None, None
+class Document(object):
+   id = None
+   rev = None
    deleted = False
    attachments = {}
    database = None
@@ -15,12 +16,12 @@ class Document():
    def __setattr__(self, key, value):
       self.setData({key: value})
    def __getattr__(self, key):
-      self.getData(key)
+      return self.getData(key)
 
    def setDatabase(self, database):
       if not isinstance(database, couch.Database):
          raise Exception("'database' arg must be instance of couch.Database")
-      self.database = database
+      super.__setattr__(self, "database", database)
 
    def getDatabase(self):
       return self.database
@@ -28,11 +29,11 @@ class Document():
    def setId(self, id):
       if not isinstance(id, couch.Uuid):
          id = couch.Uuid(id)
-      self.id = id
+      super.__setattr__(self, "id", id)
    def setRev(self, rev):
-      self.rev = rev
+      super.__setattr__(self, "rev", rev)
    def setDeleted(self, deleted):
-      self.deleted = bool(deleted)
+      super.__setattr__(self, "deleted", bool(deleted))
 
    def getId(self):
       return self.id
