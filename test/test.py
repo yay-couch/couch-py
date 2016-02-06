@@ -38,7 +38,7 @@ server = _couch.Server(client)
 # print server.setConfig("couchdb", "foo", "the foo!")
 # print server.removeConfig("couchdb", "foo")
 
-database = _couch.Database(client, "foo")
+database = _couch.Database(client, "foo_py")
 # print database.ping()
 # print database.info()
 # print database.create()
@@ -70,6 +70,22 @@ database = _couch.Database(client, "foo")
 # print database.getMissingRevisionsDiff("7ee9cdd673b109e030cec8c6f10105bc", ["3-839b4a1b168b742015f97adff9e24100"])
 # print database.getRevisionLimit()
 # print database.setRevisionLimit(1001)
+
+doc = _couch.Document(database)
+doc._id = "0f1eb3ba90772b64aee2f44b3c00055b"
+# doc._rev = "1-3c92d3e67136c8b206d90ea37a3ee76d"
+# prd(doc)
+
+# print doc.ping()
+# print doc.isExists()
+# print doc.isNotModified()
+# print doc.find()
+# print doc.findRevisions()
+# print doc.findRevisionsExtended()
+# print doc.findAttachments()
+# print doc.findAttachments(True, ["1-3c92d3e67136c8b206d90ea37a3ee76d"])
+
+
 
 # print _couch.Uuid.generate(_couch.Uuid.TIMESTAMP)
 # print _couch.Uuid.generate(_couch.Uuid.HEX_8)
