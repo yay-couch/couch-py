@@ -54,6 +54,8 @@ class Document():
    def getAttachment(self, name):
       if name in self.attachments[name]:
          return self.attachments[name]
+   def getAttachmentAll(self):
+      return self.attachments
 
    def setData(self, data={}):
       if "_id" in data: self.setId(data["_id"])
