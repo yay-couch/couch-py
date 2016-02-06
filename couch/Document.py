@@ -29,6 +29,9 @@ class Document():
    def setRev(self, rev):
       self.rev = rev
 
+   def setDeleted(self, deleted):
+      self.deleted = bool(deleted)
+
    def setData(self, data={}):
       if "_id" in data: self.setId(data["_id"])
       if "_rev" in data: self.setRev(data["_rev"])
