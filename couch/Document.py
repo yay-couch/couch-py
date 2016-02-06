@@ -25,12 +25,17 @@ class Document():
       if not isinstance(id, couch.Uuid):
          id = couch.Uuid(id)
       self.id = id
-
    def setRev(self, rev):
       self.rev = rev
-
    def setDeleted(self, deleted):
       self.deleted = bool(deleted)
+
+   def getId(self):
+      return self.id
+   def getRev(self):
+      return self.rev
+   def getDeleted(self):
+      return self.deleted
 
    def setData(self, data={}):
       if "_id" in data: self.setId(data["_id"])
