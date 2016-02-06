@@ -9,7 +9,7 @@ class Uuid():
          value = generate(Uuid.HEX_32)
       self.setValue(value)
    def __str__(self):
-      return self.value
+      return self.getValue()
 
    def setValue(self, value):
       self.value = value
