@@ -114,3 +114,5 @@ class Document(object):
          query["rev"] = self.rev
       return self.database.client.get(self.database.name +"/"+
          util.urlEncode(self.id), query).getBodyData()
+   def findRevisions(self):
+      return util.dig("_revisions", self.find({"revs": True}))
