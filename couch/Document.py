@@ -9,11 +9,17 @@ class Document():
    data = {}
    def __init__(self, database=None, data={}):
       if database:
-         if not isinstance(database, couch.Database):
-            raise Exception("'database' arg must be instance of couch.Database")
-         self.database = database
+         self.setDatabase(database)
       if data:
-         self.data = data
+         self.setData(data)
+
+   def setDatabase(self, database):
+      if not isinstance(database, couch.Database):
+         raise Exception("'database' arg must be instance of couch.Database")
+      self.database = database
+
+   def geetDatabase(self):
+      return self.database
 
    def setData(self, data={}):
       if "_id" in data: self.setId(data["_id"])
