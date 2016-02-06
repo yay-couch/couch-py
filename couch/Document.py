@@ -59,6 +59,8 @@ class Document():
    def unsetAttachment(self, name):
       if name in self.attachments[name]:
          del self.attachments[name]
+   def unsetAttachmentAll(self):
+      self.attachments = {}
 
    def setData(self, data={}):
       if "_id" in data: self.setId(data["_id"])
