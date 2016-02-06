@@ -73,5 +73,7 @@ class Document():
       for key, value in data.items():
          self.data[key] = value
 
-   def getData(self):
-      return {}
+   def getData(self, key):
+      if key != None:
+         return util.dig(key, self.data)
+      return self.data
