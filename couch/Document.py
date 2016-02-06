@@ -116,3 +116,5 @@ class Document(object):
          util.urlEncode(self.id), query).getBodyData()
    def findRevisions(self):
       return util.dig("_revisions", self.find({"revs": True}))
+   def findRevisionsExtended(self):
+      return util.dig("_revs_info", self.find({"revs_info": True}))
