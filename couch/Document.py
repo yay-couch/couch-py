@@ -100,6 +100,9 @@ class Document(object):
          if statusCode == responseStatusCode:
             return True
       return False
-
    def isExists(self):
       return self.ping(200, 304)
+   def isNotModified(self):
+      if not self.rev:
+         raise Exception("_rev field could not be empty!")
+      return self.ping(304)
