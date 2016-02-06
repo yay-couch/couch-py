@@ -26,6 +26,9 @@ class Document():
          id = couch.Uuid(id)
       self.id = id
 
+   def setRev(self, rev):
+      self.rev = rev
+
    def setData(self, data={}):
       if "_id" in data: self.setId(data["_id"])
       if "_rev" in data: self.setRev(data["_rev"])
