@@ -9,12 +9,13 @@ def pre(o):
 
 def prd(o, all=False):
    name = getObjectName(o)
-   for attr in dir(o):
+   for attrName in dir(o):
       # show only attrs
-      if all == False and attr[:2] != "__":
-         print "<%s>.%s = %s" % (name, attr, getattr(o, attr))
+      attrValue = getattr(o, attrName)
+      if all == False and not hasattr(attrValue, '__call__'):
+         print "<%s>.%s = %s" % (name, attrName, attrValue)
       elif all == True:
-         print "<%s>.%s = %s" % (name, attr, getattr(o, attr))
+         print "<%s>.%s = %s" % (name, attrName, attrValue)
 
 def dig(key, array):
    if key in array:
