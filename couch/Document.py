@@ -21,6 +21,11 @@ class Document():
    def geetDatabase(self):
       return self.database
 
+   def setId(self, id):
+      if not isinstance(id, couch.Uuid):
+         id = couch.Uuid(id)
+      self.id = id
+
    def setData(self, data={}):
       if "_id" in data: self.setId(data["_id"])
       if "_rev" in data: self.setRev(data["_rev"])
