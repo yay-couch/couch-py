@@ -37,6 +37,21 @@ class Document():
    def getDeleted(self):
       return self.deleted
 
+   def setAttachment(self, attachment):
+      if not isinstance(attachment, couch.Attachment):
+         if "file" not in attachment:
+            raise Exception("Attachment file is required!")
+         file = attachment["file"]
+         fileName = attachment["file_name"] or None
+         attachment = DocumentAttachment(self, file, fileName)
+      attcKey = "_attachments."+ attachment.fileName
+      if util.isSet(self.data, attcKey):
+         raise Exception("Attachment is alredy exists on this document!")
+      if "_attachments" not in self.data:
+         self.data["_attachments"] = {}
+      self.attachments[attachment.fileName] = \
+         self.data['_attachments'][attachment.fileName] = attachment;
+
    def setData(self, data={}):
       if "_id" in data: self.setId(data["_id"])
       if "_rev" in data: self.setRev(data["_rev"])
