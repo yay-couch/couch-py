@@ -51,6 +51,9 @@ class Document():
          self.data["_attachments"] = {}
       self.attachments[attachment.fileName] = \
          self.data['_attachments'][attachment.fileName] = attachment;
+   def getAttachment(self, name):
+      if name in self.attachments[name]:
+         return self.attachments[name]
 
    def setData(self, data={}):
       if "_id" in data: self.setId(data["_id"])
