@@ -155,3 +155,14 @@ class Document(object):
       if ret and ("rev" in ret):
          self.setRev(ret["rev"])
       return ret
+
+   def remove(self, batch = False, fullCommit = False):
+      if not self.id and not self.rev:
+         raise Exception("Both _id & _rev fields could not be empty!")
+      batch = "?batch=ok" if batch else ""
+      headers = {}
+      headers["If-Match"] = self.rev
+      if fullCommit:
+         headers["X-Couch-Full-Commit"] = "true"
+      return self.database.client.delete(self.database.name +"/"+ util.urlEncode(self.id) + batch,
+            None, headers).getBodyData();
