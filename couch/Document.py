@@ -82,7 +82,7 @@ class Document(object):
       for key, value in data.items():
          self.data[key] = value
 
-   def getData(self, key):
+   def getData(self, key = None):
       if key != None:
          return util.dig(key, self.data)
       return self.data
@@ -128,3 +128,5 @@ class Document(object):
             attsSinceArray.append('"%s"' % util.quote(attsSinceValue))
          query["atts_since"] = "[%s]" % ",".join(attsSinceArray)
       return util.dig("_attachments", self.find(query))
+
+
