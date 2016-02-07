@@ -129,4 +129,29 @@ class Document(object):
          query["atts_since"] = "[%s]" % ",".join(attsSinceArray)
       return util.dig("_attachments", self.find(query))
 
-
+   def save(self, batch = False, fullCommit = False):
+      batch = "?batch=ok" if batch else ""
+      headers = {}
+      if fullCommit:
+         headers["X-Couch-Full-Commit"] = "true"
+      if self.rev:
+         headers["If-Match"] = self.rev
+      data = self.getData()
+      if self.attachments:
+         data["_attachments"] = {}
+         for name, attachment in self.attachments.items():
+            data["_attachments"][name] = attachment.toArray()
+      if not self.id:
+         # insert action
+         ret = self.database.client.post(self.database.name + batch, None,
+            data, headers).getBodyData()
+         if ret and ("id" in ret):
+            self.setId(ret["id"])
+      else:
+         # update action
+         ret = self.database.client.put(self.database.name +"/"+ util.urlEncode(self.id) + batch,
+            None, data, headers).getBodyData()
+      # for next instant call(s)
+      if ret and ("rev" in ret):
+         self.setRev(ret["rev"])
+      return ret
