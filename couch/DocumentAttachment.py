@@ -55,6 +55,6 @@ class DocumentAttachment(object):
          headers["If-None-Match"] = '"%s"' % self.digest
       database = self.document.getDatabase()
       response = database.client.head("%s/%s/%s" %
-            (database.name, util.urlEncode(docId), util.urlEncode(self.fileName)), query, headers)
+         (database.name, util.urlEncode(docId), util.urlEncode(self.fileName)), query, headers)
       return response.getStatusCode() in (args or [200])
 
