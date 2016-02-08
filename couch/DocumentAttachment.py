@@ -1,6 +1,8 @@
 import couch
 import couch.util.Util as util
 
+from os.path import basename
+
 class DocumentAttachment(object):
    document = None
    file, fileName = None, None
@@ -9,7 +11,11 @@ class DocumentAttachment(object):
    digest = None
 
    def __init__(self, document = None, file = None, fileName = None):
-      pass
+      if document:
+         self.setDocument(document)
+      if file:
+         self.file = file
+         self.fileName = fileName if fileName else basename(file)
 
    def setDocument(self, document):
       if not isinstance(document, couch.Document):
