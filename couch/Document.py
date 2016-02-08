@@ -49,11 +49,10 @@ class Document(object):
          file = attachment["file"]
          fileName = attachment["file_name"] or None
          attachment = DocumentAttachment(self, file, fileName)
-      attcKey = "_attachments."+ attachment.fileName
-      if util.isSet(self.data, attcKey):
-         raise Exception("Attachment is alredy exists on this document!")
       if "_attachments" not in self.data:
          self.data["_attachments"] = {}
+      if attachment.fileName in self.data["_attachments"]:
+         raise Exception("Attachment is alredy exists on this document!")
       self.attachments[attachment.fileName] = \
          self.data["_attachments"][attachment.fileName] = attachment
 
