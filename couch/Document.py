@@ -165,4 +165,17 @@ class Document(object):
       if fullCommit:
          headers["X-Couch-Full-Commit"] = "true"
       return self.database.client.delete(self.database.name +"/"+ util.urlEncode(self.id) + batch,
-            None, headers).getBodyData();
+            None, headers).getBodyData()
+
+   def copy(self, dest, batch = False, fullCommit = False):
+      if not self.id:
+         raise Exception("_id field could not be empty!")
+      if not dest:
+         raise Exception("Destination could not be empty!")
+      batch = "?batch=ok" if batch else ""
+      headers = {}
+      headers["Destination"] = dest
+      if fullCommit:
+         headers["X-Couch-Full-Commit"] = "true"
+      return self.database.client.copy(self.database.name +"/"+ util.urlEncode(self.id) + batch,
+            None, headers).getBodyData()
