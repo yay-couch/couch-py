@@ -16,3 +16,5 @@ class DocumentAttachment(object):
          raise Exception("'document' arg must be instance of couch.Document")
       super.__setattr__(self, "document", document)
 
+   def getDocument(self):
+      return self.document
