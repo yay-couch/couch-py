@@ -11,4 +11,8 @@ class DocumentAttachment(object):
    def __init__(self, document = None, file = None, fileName = None):
       pass
 
+   def setDocument(self, document):
+      if not isinstance(document, couch.Document):
+         raise Exception("'document' arg must be instance of couch.Document")
+      super.__setattr__(self, "document", document)
 
