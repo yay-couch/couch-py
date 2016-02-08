@@ -92,13 +92,3 @@ def urlParse(url):
 
 def quote(input):
    return input.replace("\"", "%22")
-
-def isSet(input, path):
-   if not input:
-      return True
-   return (None != dig(input, path))
-
-def isEmpty(input):
-   if not input:
-      return True
-   return (input is None or input is "" or input is 0 or input is 0.00)
