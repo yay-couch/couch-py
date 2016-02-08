@@ -52,9 +52,39 @@ class DocumentAttachment(object):
       if docRev:
          query["rev"] = docRev
       if self.digest:
-         headers["If-None-Match"] = '"%s"' % self.digest
+         headers["If-None-Match"] = '"%s"' % (self.digest)
       database = self.document.getDatabase()
       response = database.client.head("%s/%s/%s" %
          (database.name, util.urlEncode(docId), util.urlEncode(self.fileName)), query, headers)
       return response.getStatusCode() in (args or [200])
 
+   def find(self):
+      if not self.document:
+         raise Exception("Attachment document is not defined!")
+      docId = self.document.getId()
+      docRev = self.document.getRev()
+      if not docId:
+         raise Exception("Attachment document _id is required!")
+      if not self.fileName:
+         raise Exception("Attachment file name is required!")
+      query, headers = {}, {}
+      if docRev:
+         query["rev"] = docRev
+      headers["Accept"] = "*/*"
+      headers["Content-Type"] = None
+      if self.digest:
+         headers["If-None-Match"] = '"%s"' % (self.digest)
+      database = self.document.getDatabase()
+      response = database.client.get("%s/%s/%s" %
+         (database.name, util.urlEncode(docId), util.urlEncode(self.fileName)), query, headers)
+      if response.getStatusCode() in [200, 304]:
+         ret = {}
+         ret["content"] = response.getBody()
+         ret["content_type"] = response.getHeader("Content-Type")
+         ret["content_length"] = response.getHeader("Content-Length")
+         md5 = response.getHeader("Content-MD5")
+         if md5:
+            ret["digest"] = "md5-"+ md5
+         else:
+            ret["digest"] = "md5-"+ (response.getHeader("ETag") or "").strip('"')
+         return ret
