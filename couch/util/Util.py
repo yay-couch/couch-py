@@ -8,7 +8,7 @@ def pre(o):
    pprint.pprint(o)
 
 def prd(o, all=False):
-   name = o.__class__
+   name = o.__module__
    for attrName in dir(o):
       # show only attrs
       attrValue = getattr(o, attrName)
