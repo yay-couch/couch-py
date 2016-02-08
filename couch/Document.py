@@ -179,3 +179,18 @@ class Document(object):
          headers["X-Couch-Full-Commit"] = "true"
       return self.database.client.copy(self.database.name +"/"+ util.urlEncode(self.id) + batch,
             None, headers).getBodyData()
+
+   def copyFrom(self, dest, batch = False, fullCommit = False):
+      if not self.id or not self.rev:
+         raise Exception("Both _id & _rev fields could not be empty!")
+      if not dest:
+         raise Exception("Destination could not be empty!")
+      batch = "?batch=ok" if batch else ""
+      headers = {}
+      headers["If-Match"] = self.rev
+      headers["Destination"] = dest
+      if fullCommit:
+         headers["X-Couch-Full-Commit"] = "true"
+      return self.database.client.copy(self.database.name +"/"+ util.urlEncode(self.id) + batch,
+            None, headers).getBodyData()
+
