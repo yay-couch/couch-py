@@ -2,6 +2,7 @@ import os
 import re
 import pprint
 import urllib
+import subprocess
 import json, base64
 from urlparse import urlparse
 
@@ -96,3 +97,28 @@ def quote(input):
 
 def basename(path):
    return os.path.basename(path)
+
+def fileInfo(file):
+   if not os.path.isfile(file):
+      raise Exception("Given file does not exist! file: '%s'" % file)
+   info = {
+      "mime": None,
+      "charset": None,
+      "name": None,
+      "extension": None,
+   }
+   info["name"] = basename(file)
+   info["extension"] = os.path.splitext(file)[1][1:]
+   try:
+      out = subprocess.check_output(["file", "-i", file])
+      if out:
+         tmp = out.strip().split(" ")
+         if len(tmp) == 3:
+            mime = tmp[1].strip()
+            if mime[-1] == ";":
+               mime = mime[:-1]
+            info["mime"] = mime
+            info["charset"] = tmp[2].strip().split("=")[1]
+   except:
+      pass
+   return info
