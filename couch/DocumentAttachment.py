@@ -26,6 +26,11 @@ class DocumentAttachment(object):
       else:
          super.__setattr__(self, name, value)
 
+   def __getattr__(self, name):
+      if not hasattr(self, name):
+         raise Exception("`%s` property does not exists on this object!" % name)
+      return super.__getattr__(self, name)
+
    def setDocument(self, document):
       if not isinstance(document, couch.Document):
          raise Exception("'document' arg must be instance of couch.Document")
