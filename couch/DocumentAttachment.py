@@ -1,8 +1,6 @@
 import couch
 import couch.util.Util as util
 
-from os.path import basename
-
 class DocumentAttachment(object):
    document = None
    file, fileName = None, None
@@ -15,14 +13,14 @@ class DocumentAttachment(object):
          self.setDocument(document)
       if file:
          self.file = file
-         self.fileName = fileName if fileName else basename(file)
+         self.fileName = fileName if fileName else util.basename(file)
 
    def __setattr__(self, name, value):
       if not hasattr(self, name):
          raise Exception("`%s` property does not exists on this object!" % name)
       if name == "file":
          super.__setattr__(self, "file", value)
-         super.__setattr__(self, "fileName", basename(value))
+         super.__setattr__(self, "fileName", util.basename(value))
       else:
          super.__setattr__(self, name, value)
 
@@ -88,3 +86,6 @@ class DocumentAttachment(object):
          else:
             ret["digest"] = "md5-"+ (response.getHeader("ETag") or "").strip('"')
          return ret
+
+
+

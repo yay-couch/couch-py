@@ -1,3 +1,4 @@
+import os
 import re
 import pprint
 import urllib
@@ -92,3 +93,6 @@ def urlParse(url):
 
 def quote(input):
    return input.replace("\"", "%22")
+
+def basename(path):
+   return os.path.basename(path)
