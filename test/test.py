@@ -72,7 +72,7 @@ database = _couch.Database(client, "foo_py")
 # print database.setRevisionLimit(1001)
 
 doc = _couch.Document(database)
-doc._id = "0f1eb3ba90772b64aee2f44b3c00055b"
+# doc._id = "0f1eb3ba90772b64aee2f44b3c00055b"
 # doc._rev = "1-3c92d3e67136c8b206d90ea37a3ee76d"
 # doc.type = "py_test"
 # prd(doc)
@@ -92,9 +92,12 @@ doc._id = "0f1eb3ba90772b64aee2f44b3c00055b"
 # print doc.remove()
 # print doc.copy("0f1eb3ba90772b64aee2f44b3c00055b_copy_2")
 
+doc._id = "19f24300c2b268843fc1429dfa00197d"
 docAttc = _couch.DocumentAttachment(doc)
-docAttc.file = __file__
-prd(docAttc)
+docAttc.file = "./attc1.txt"
+# prd(docAttc)
+# print docAttc.ping()
+print docAttc.find()
 
 # print _couch.Uuid.generate(_couch.Uuid.TIMESTAMP)
 # print _couch.Uuid.generate(_couch.Uuid.HEX_8)
