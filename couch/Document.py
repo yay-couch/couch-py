@@ -95,11 +95,7 @@ class Document(object):
          headers["If-None-Match"] = '"%s"' % (self.rev)
       response = self.database.client.head(self.database.name +"/"+ util.urlEncode(self.id),
          None, headers)
-      responseStatusCode = response.getStatusCode()
-      for statusCode in (args or [200]):
-         if statusCode == responseStatusCode:
-            return True
-      return False
+      return response.getStatusCode() in (args or [200])
 
    def isExists(self):
       return self.ping(200, 304)
