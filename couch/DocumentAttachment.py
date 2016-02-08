@@ -38,3 +38,23 @@ class DocumentAttachment(object):
 
    def getDocument(self):
       return self.document
+
+   def ping(self, *args):
+      if not self.document:
+         raise Exception("Attachment document is not defined!")
+      docId = self.document.getId()
+      docRev = self.document.getRev()
+      if not docId:
+         raise Exception("Attachment document _id is required!")
+      if not self.fileName:
+         raise Exception("Attachment file name is required!")
+      query, headers = {}, {}
+      if docRev:
+         query["rev"] = docRev
+      if self.digest:
+         headers["If-None-Match"] = '"%s"' % self.digest
+      database = self.document.getDatabase()
+      response = database.client.head("%s/%s/%s" %
+            (database.name, util.urlEncode(docId), util.urlEncode(self.fileName)), query, headers)
+      return response.getStatusCode() in (args or [200])
+
