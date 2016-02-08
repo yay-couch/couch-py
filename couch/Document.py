@@ -93,31 +93,37 @@ class Document(object):
       headers = {}
       if self.rev != None:
          headers["If-None-Match"] = '"%s"' % (self.rev)
-      response = self.database.client.head(self.database.name +"/"+
-         util.urlEncode(self.id), None, headers)
+      response = self.database.client.head(self.database.name +"/"+ util.urlEncode(self.id),
+         None, headers)
       responseStatusCode = response.getStatusCode()
       for statusCode in (args or [200]):
          if statusCode == responseStatusCode:
             return True
       return False
+
    def isExists(self):
       return self.ping(200, 304)
+
    def isNotModified(self):
       if not self.rev:
          raise Exception("_rev field could not be empty!")
       return self.ping(304)
+
    def find(self, query = {}):
       if not self.id:
          raise Exception("_id field is could not be empty!")
       query = query or {}
       if "rev" not in query and self.rev:
          query["rev"] = self.rev
-      return self.database.client.get(self.database.name +"/"+
-         util.urlEncode(self.id), query).getBodyData()
+      return self.database.client.get(self.database.name +"/"+ util.urlEncode(self.id),
+         query).getBodyData()
+
    def findRevisions(self):
       return util.dig("_revisions", self.find({"revs": True}))
+
    def findRevisionsExtended(self):
       return util.dig("_revs_info", self.find({"revs_info": True}))
+
    def findAttachments(self, attEncInfo = False, attsSince = []):
       query = {}
       query["attachments"] = True
@@ -165,7 +171,7 @@ class Document(object):
       if fullCommit:
          headers["X-Couch-Full-Commit"] = "true"
       return self.database.client.delete(self.database.name +"/"+ util.urlEncode(self.id) + batch,
-            None, headers).getBodyData()
+         None, headers).getBodyData()
 
    def copy(self, dest, batch = False, fullCommit = False):
       if not self.id:
@@ -178,7 +184,7 @@ class Document(object):
       if fullCommit:
          headers["X-Couch-Full-Commit"] = "true"
       return self.database.client.copy(self.database.name +"/"+ util.urlEncode(self.id) + batch,
-            None, headers).getBodyData()
+         None, headers).getBodyData()
 
    def copyFrom(self, dest, batch = False, fullCommit = False):
       if not self.id or not self.rev:
@@ -192,7 +198,7 @@ class Document(object):
       if fullCommit:
          headers["X-Couch-Full-Commit"] = "true"
       return self.database.client.copy(self.database.name +"/"+ util.urlEncode(self.id) + batch,
-            None, headers).getBodyData()
+         None, headers).getBodyData()
 
    def copyTo(self, dest, destRev, batch = False, fullCommit = False):
       if not self.id or not self.rev:
@@ -206,5 +212,5 @@ class Document(object):
       if fullCommit:
          headers["X-Couch-Full-Commit"] = "true"
       return self.database.client.copy(self.database.name +"/"+ util.urlEncode(self.id) + batch,
-            None, headers).getBodyData()
+         None, headers).getBodyData()
 
