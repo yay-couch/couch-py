@@ -135,6 +135,9 @@ class DocumentAttachment(object):
       array["content_type"] = self.contentType
       return array
 
+   def toJson(self, encode = True):
+      return util.jsonEncode(self.toArray(encode))
+
    def readFile(self, encode = True):
       if not self.file:
          raise Exception("Attachment file is empty!")
