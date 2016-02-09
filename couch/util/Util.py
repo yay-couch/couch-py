@@ -122,3 +122,15 @@ def fileInfo(file):
    except:
       pass
    return info
+
+def fileGetContents(file, offset = -1, maxlen = -1):
+   if not os.path.isfile(file):
+      raise Exception("Given file does not exist! file: '%s'" % file)
+   try:
+      fp = open(file, "rb")
+      if offset > 0:
+         fp.seek(offset)
+      return fp.read(maxlen)
+   finally:
+      fp.close()
+
