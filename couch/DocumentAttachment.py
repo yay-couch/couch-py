@@ -87,6 +87,26 @@ class DocumentAttachment(object):
             ret["digest"] = "md5-"+ (response.getHeader("ETag") or "").strip('"')
          return ret
 
+   def save(self):
+      if not self.document:
+         raise Exception("Attachment document is not defined!")
+      docId = self.document.getId()
+      docRev = self.document.getRev()
+      if not docId:
+         raise Exception("Attachment document _id is required!")
+      if not docRev:
+         raise Exception("Attachment document _rev is required!")
+      if not self.fileName:
+         raise Exception("Attachment file name is required!")
+      self.readFile(False)
+      headers = {}
+      headers["If-Match"] = docRev
+      headers["Content-Type"] = self.contentType
+      database = self.document.getDatabase()
+      return database.client.put("%s/%s/%s" %
+         (database.name, util.urlEncode(docId), util.urlEncode(self.fileName)),
+            None, self.data, headers).getBodyData()
+
    def readFile(self, encode = True):
       if not self.file:
          raise Exception("Attachment file is empty!")
