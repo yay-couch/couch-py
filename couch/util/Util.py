@@ -98,8 +98,11 @@ def quote(input):
 def basename(path):
    return os.path.basename(path)
 
+def fileExists(file):
+   return os.path.isfile(file)
+
 def fileInfo(file):
-   if not os.path.isfile(file):
+   if not fileExists(file):
       raise Exception("Given file does not exist! file: '%s'" % file)
    info = {
       "mime": None,
@@ -124,7 +127,7 @@ def fileInfo(file):
    return info
 
 def fileGetContents(file, offset = -1, maxlen = -1):
-   if not os.path.isfile(file):
+   if not fileExists(file):
       raise Exception("Given file does not exist! file: '%s'" % file)
    try:
       fp = open(file, "rb")
