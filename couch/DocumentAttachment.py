@@ -128,6 +128,13 @@ class DocumentAttachment(object):
          (database.name, util.urlEncode(docId), util.urlEncode(self.fileName), batch),
             None, headers).getBodyData()
 
+   def toArray(self, encode = True):
+      self.readFile(encode)
+      array = {}
+      array["data"] = self.data
+      array["content_type"] = self.contentType
+      return array
+
    def readFile(self, encode = True):
       if not self.file:
          raise Exception("Attachment file is empty!")
