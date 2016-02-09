@@ -107,6 +107,27 @@ class DocumentAttachment(object):
          (database.name, util.urlEncode(docId), util.urlEncode(self.fileName)),
             None, self.data, headers).getBodyData()
 
+   def remove(self, batch = False, fullCommit = False):
+      if not self.document:
+         raise Exception("Attachment document is not defined!")
+      docId = self.document.getId()
+      docRev = self.document.getRev()
+      if not docId:
+         raise Exception("Attachment document _id is required!")
+      if not docRev:
+         raise Exception("Attachment document _rev is required!")
+      if not self.fileName:
+         raise Exception("Attachment file name is required!")
+      batch = "?batch=ok" if batch else ""
+      headers = {}
+      headers["If-Match"] = docRev
+      if fullCommit:
+         headers["X-Couch-Full-Commit"] = "true"
+      database = self.document.getDatabase()
+      return database.client.delete("%s/%s/%s%s" %
+         (database.name, util.urlEncode(docId), util.urlEncode(self.fileName), batch),
+            None, headers).getBodyData()
+
    def readFile(self, encode = True):
       if not self.file:
          raise Exception("Attachment file is empty!")
