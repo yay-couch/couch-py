@@ -92,12 +92,17 @@ doc = _couch.Document(database)
 # print doc.remove()
 # print doc.copy("0f1eb3ba90772b64aee2f44b3c00055b_copy_2")
 
-doc._id = "19f24300c2b268843fc1429dfa00197d"
-docAttc = _couch.DocumentAttachment(doc)
-docAttc.file = "./attc1.txt"
+# doc._id = "19f24300c2b268843fc1429dfa00197d"
+# doc._rev = "4-5245ae8f32b06cfb2ea7364a95075a23"
+# docAttc = _couch.DocumentAttachment(doc)
+# docAttc.file = "./attc1.txt"
 # prd(docAttc)
 # print docAttc.ping()
-print docAttc.find()
+# print docAttc.find()
+# print docAttc.save()
+# print docAttc.remove()
+# print docAttc.toArray()
+# print docAttc.toJson()
 
 # print _couch.Uuid.generate(_couch.Uuid.TIMESTAMP)
 # print _couch.Uuid.generate(_couch.Uuid.HEX_8)
