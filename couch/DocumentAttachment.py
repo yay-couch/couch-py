@@ -87,5 +87,14 @@ class DocumentAttachment(object):
             ret["digest"] = "md5-"+ (response.getHeader("ETag") or "").strip('"')
          return ret
 
-
+   def readFile(self, encode = True):
+      if not self.file:
+         raise Exception("Attachment file is empty!")
+      info = util.fileInfo(self.file)
+      self.contentType = info["mime"]
+      data = util.fileGetContents(self.file)
+      self.data = data
+      if encode:
+         self.data = util.base64Encode(data)
+      self.dataLength = len(data)
 
