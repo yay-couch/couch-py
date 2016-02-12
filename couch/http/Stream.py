@@ -23,8 +23,8 @@ class Stream(object):
    """
    Stream object.
 
-   @module couch
-   @object couch.Stream
+   @module couch.http
+   @object couch.http.Stream
    @author Kerem Güneş <qeremy[at]gmail[dot]com>
    """
 
