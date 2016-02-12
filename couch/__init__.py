@@ -1,5 +1,5 @@
 """
-Copyright 2015 Kerem Güneş
+Copyright 2015 Kerem Gunes
    <http://qeremy.com>
 
 Apache License, Version 2.0
