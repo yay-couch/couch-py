@@ -49,9 +49,12 @@ class Couch():
       @param  {dict} config
       @param  {bool} debug
       """
-      # auto-set debug option
+      # check debug option
       if "debug" not in config:
-         self.DEBUG = config["debug"] = debug
+         config["debug"] = debug
+
+      # set debug
+      self.DEBUG = config["debug"]
 
       self.setConfig(config)
 
