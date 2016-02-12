@@ -108,3 +108,7 @@ doc = _couch.Document(database)
 # print _couch.Uuid.generate(_couch.Uuid.HEX_8)
 # print _couch.Uuid.generate(_couch.Uuid.HEX_32)
 # print _couch.Uuid.generate(_couch.Uuid.HEX_40)
+
+# q = _couch.Query()
+# q.set("a", True).skip(1).limit(1)
+# print q.toString()
