@@ -132,7 +132,8 @@ class Client():
          headers = util.parseHeaders(headers)
          if headers:
             for key, value in headers.items():
-               if key == "0": # status line
+               # status line
+               if key == "0":
                   self.Response.setStatus(value)
                self.Response.setHeader(key, value)
          self.Response.setBody(body)
