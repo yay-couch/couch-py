@@ -35,8 +35,8 @@ class Request(Stream):
    def setUri(self, uri, uriParams={}):
       self.uri = uri
       if uriParams:
-         query = util.urlQuery(uriParams)
-         if query:
+         query = couch.Query(uriParams).toString()
+         if query != "":
             self.uri += "?"+ query
       return self
 
