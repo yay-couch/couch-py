@@ -121,7 +121,7 @@ class DocumentAttachment(object):
       """
       Ping a document attachment.
 
-      @param  {int} *args Expected status code
+      @param  {int} *args Expected status code(s).
       @return {bool}
       @raises {Exception}
       """
