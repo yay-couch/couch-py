@@ -60,7 +60,6 @@ class Uuid():
 
       @return {str|int}
       """
-
       return self.getValue()
 
    def setValue(self, value):
@@ -70,7 +69,6 @@ class Uuid():
       @param  {str|int} value
       @return {None}
       """
-
       self.value = value
 
    def getValue(self):
@@ -79,7 +77,6 @@ class Uuid():
 
       @param {str|int} value
       """
-
       return self.value
 
    @staticmethod
