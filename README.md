@@ -238,7 +238,7 @@ doc.findRevisionsExtended()
 doc.findAttachments(attEncInfo=False, attsSince=[])
 
 # add attachments
-doc.setAttachment({"file": "./file.txt"}); # name goes to be file.txt
+doc.setAttachment({"file": "./file.txt"}) # name goes to be file.txt
 doc.setAttachment({"file": "./file.txt", "file_name": "my_file_name"})
 doc.setAttachment(Couch.DocumentAttachment(doc, file, fileName=None))
 doc.save()
@@ -325,15 +325,14 @@ query.set("conflicts", True) \
 print query.toString()
 
 # use it!
-db.getDocumentAll(query);
+db.getDocumentAll(query)
 ```
 
 ## Request / Response
 
 ```python
 # after any http stream (server ping, database ping, document save etc)
-client.request("GET /").done(function(stream, data){
-
+client.request("GET /")
 
 # dump raw stream with headers/body parts
 print client.getRequest().toString()
@@ -367,4 +366,29 @@ Cache-Control: must-revalidate
 
 {"couchdb":"Welcome","uuid":"5a660f4695a5fa9ab2cd22722bc01e96", ...
 """
+```
+
+## Error Handling
+
+Couch will not throw any server response error, such as `409 Conflict` etc. It only throws library-related errors or wrong usages of the library (ie. when `_id` is required for some action but you did not provide it).
+
+```js
+# create issue
+doc = Couch.Document()
+doc._id = "an_existing_docid"
+
+# no error will be thrown
+doc.save()
+
+# but could be so
+if 201 != client.getResponse().getStatusCode():
+   print "nö!"
+
+   # or show response error string
+   print client.getResponse().getError()
+
+   # or show response error data
+   data = client.Response().getErrorData()
+   print data["error"]
+   print data["reason"]
 ```
