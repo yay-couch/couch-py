@@ -274,7 +274,6 @@ attc.remove()
 attc.toJson()
 attc.toArray()
 ```
-```
 
 ### DocumentDesign Object
 
