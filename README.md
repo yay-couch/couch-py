@@ -355,7 +355,7 @@ Host: localhost:5984
 Connection: close
 Accept: application/json
 Content-Type: application/json
-User-Agent: Couch/v1.0.0 (+http://github.com/yay-couch/couch-js)
+User-Agent: Couch/v1.0.0 (+http://github.com/yay-couch/couch-py)
 
 
 HTTP/1.1 200 OK
