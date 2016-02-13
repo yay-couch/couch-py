@@ -243,3 +243,35 @@ doc.setAttachment({"file": "./file.txt", "file_name": "my_file_name"})
 doc.setAttachment(Couch.DocumentAttachment(doc, file, fileName=None))
 doc.save()
 ```
+
+### DocumentAttachment Object
+
+```python
+attc = Couch.DocumentAttachment(doc)
+
+# ping attachment
+attc.ping()
+
+# find an attachment
+attc.fileName = "my_attc_name"
+attc.find()
+
+# find an attachment by digest
+attc.fileName = "my_attc_name"
+attc.digest   = "U1p5BLvdnOZVRyR6YrXBoQ=="
+attc.find()
+
+# add an attachment to document
+attc.file     = "attc.txt"
+attc.fileName = "my_attc_name"
+attc.save()
+
+# remove an attachment from document
+attc.fileName = "my_attc_name"
+attc.remove()
+
+# to json/array
+attc.toJson()
+attc.toArray()
+```
+```
