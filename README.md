@@ -8,11 +8,11 @@ Notice: See CouchDB's official documents before using this library.
 
 ```python
 # create a fresh document
-doc = Couch.Document(db);
-doc.name = "The Doc!";
-doc.save();
+doc = Couch.Document(db)
+doc.name = "The Doc!"
+doc.save()
 
 # append an attachment to the same document above
-doc.setAttachment(Couch.DocumentAttachment(doc, "./file.txt"));
-doc.save();
+doc.setAttachment(Couch.DocumentAttachment(doc, "./file.txt"))
+doc.save()
 ```
