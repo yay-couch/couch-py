@@ -176,7 +176,7 @@ db.updateDocument({
 })
 
 # delete a document
-doc = new Couch.Document(None, {
+doc = Couch.Document(None, {
     "_id": "e90636c398458a9d5969d2e71b04b0a4",
    "_rev": "1-afa338dcbc6870f1a1dd441557f79859",
 })
@@ -189,10 +189,10 @@ docs = []
 docs.append({
    # doc data id etc (and rev for updade/delete)
 })
-docs.append(new Couch.Document(None, {
+docs.append Couch.Document(None, {
    # doc data id etc (and rev for updade/delete)
 }))
-doc = new Couch.Document()
+doc = Couch.Document()
 doc.foo = "..."
 docs.append(doc)
 
