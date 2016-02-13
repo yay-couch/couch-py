@@ -95,8 +95,7 @@ server = Couch.Server(client)
 
 # methods
 server.ping()
-server.info(key)
-server.info("version")
+server.info(key="")
 server.version()
 
 server.getActiveTasks()
@@ -106,7 +105,7 @@ server.getLogs(query)
 
 server.restart()
 server.replicate(query={"source": "foo", "target": "foo2",
-    "create_target": true})
+   "create_target": true})
 
 server.getStats(path="")
 server.getStats("/couchdb/request_time")
@@ -119,4 +118,88 @@ server.getConfig("couchdb")
 server.getConfig("couchdb", "uuid")
 server.setConfig("couchdb", "foo", "the foo!")
 server.removeConfig("couchdb", "foo")
+```
+
+### Database Object
+
+```python
+db = Couch.Database(client, "foo")
+
+# db methods
+db.ping()
+db.info(key="")
+db.create()
+db.remove()
+db.replicate(target, targetCreate=True)
+db.getChanges(query={}, docIds=[])
+db.compact(ddoc="")
+db.ensureFullCommit()
+db.viewCleanup()
+db.getSecurity()
+db.setSecurity(admins={}, members={})
+
+db.getRevisionLimit()
+db.setRevisionLimit(limit)
+
+
+# tmp view method
+db.viewTemp(map="", reduce="")
+
+# document methods
+db.purge(docId="", docRevs=[])
+db.getMissingRevisions(docId="", docRevs=[])
+db.getMissingRevisionsDiff(docId="", docRevs=[])
+# get a document
+db.getDocument(key="")
+# get all documents
+db.getDocumentAll(query={}, keys=[])
+
+# create a document
+doc = Couch.Document()
+doc.name = "test"
+# param as Couch.Document
+db.createDocument(doc)
+# param as object
+db.createDocument({"name": "test"})
+
+# update a document
+doc = Couch.Document()
+doc._id = "e90636c398458a9d5969d2e71b04ad81"
+doc._rev = "3-9aeefae43b9fad5df8cc87fe8bcc2718"
+# param as Couch.Document
+db.updateDocument(doc)
+# param as dict
+db.updateDocument({
+    "_id": "e90636c398458a9d5969d2e71b04b0a4",
+   "_rev": "1-afa338dcbc6870f1a1dd441557f79859",
+   "test": "test (update)"
+})
+
+# delete a document
+doc = new Couch.Document(None, {
+    "_id": "e90636c398458a9d5969d2e71b04b0a4",
+   "_rev": "1-afa338dcbc6870f1a1dd441557f79859",
+})
+db.deleteDocument(doc)
+
+# multiple CRUD
+docs = []
+
+# all accepted, just fill the doc data
+docs.append({
+   # doc data id etc (and rev for updade/delete)
+})
+docs.append(new Couch.Document(None, {
+   # doc data id etc (and rev for updade/delete)
+}))
+doc = new Couch.Document()
+doc.foo = "..."
+docs.append(doc)
+
+# multiple create
+db.createDocumentAll(docs)
+# multiple update
+db.updateDocumentAll(docs)
+# multiple delete
+db.deleteDocumentAll(docs)
 ```
