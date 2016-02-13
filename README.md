@@ -66,7 +66,7 @@ couch.setConfig(config, debug)
 
 ```python
 # used in Server and Database objects
-# client = new Couch.Client(couch)
+client = Couch.Client(couch)
 ```
 
 If you need any direct request for any reason, you can use the methods below.
