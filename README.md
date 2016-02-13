@@ -189,7 +189,7 @@ docs = []
 docs.append({
    # doc data id etc (and rev for updade/delete)
 })
-docs.append Couch.Document(None, {
+docs.append(Couch.Document(None, {
    # doc data id etc (and rev for updade/delete)
 }))
 doc = Couch.Document()
