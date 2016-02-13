@@ -203,3 +203,43 @@ db.updateDocumentAll(docs)
 # multiple delete
 db.deleteDocumentAll(docs)
 ```
+
+### Document Object
+
+```python
+doc = Couch.Document(db)
+# set props (so data)
+doc._id = "e90636c398458a9d5969d2e71b04b2e4"
+doc._rev = "2-393dbbc2cca7eea546a3c750ebeddd70"
+
+# checker method
+doc.ping(callback)
+
+# CRUD methods
+doc.find(query={})
+doc.remove(batch=False, fullCommit=False)
+# create
+doc.save(batch=False, fullCommit=False)
+# update
+doc._id = "abc"
+doc._rev = "1-abc"
+doc.save(batch=False, fullCommit=False)
+
+# copy methods
+doc.copy(dest, batch=False, fullCommit=False)
+doc.copyFrom(dest, batch=False, fullCommit=False)
+doc.copyTo(dest, destRev, batch=False, fullCommit=False)
+
+# find revisions
+doc.findRevisions()
+doc.findRevisionsExtended()
+
+# find attachments
+doc.findAttachments(attEncInfo=False, attsSince=[])
+
+# add attachments
+doc.setAttachment({"file": "./file.txt"}); # name goes to be file.txt
+doc.setAttachment({"file": "./file.txt", "file_name": "my_file_name"})
+doc.setAttachment(Couch.DocumentAttachment(doc, file, fileName=None))
+doc.save()
+```
