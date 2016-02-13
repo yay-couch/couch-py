@@ -316,7 +316,7 @@ query = Couch.Query()
 query = Couch.Query({"foo": 1})
 
 # add params
-query.set("conflicts", true) \
+query.set("conflicts", True) \
    .set("stale", "ok") \
    .skip(1) \
    .limit(2)
@@ -326,4 +326,45 @@ print query.toString()
 
 # use it!
 db.getDocumentAll(query);
+```
+
+## Request / Response
+
+```python
+# after any http stream (server ping, database ping, document save etc)
+client.request("GET /").done(function(stream, data){
+
+
+# dump raw stream with headers/body parts
+print client.getRequest().toString()
+print client.getResponse().toString()
+
+# get response body (string)
+print client.getResponse().getBody()
+
+# get response data (parsed)
+print client.getResponse().getBodyData()
+# >> {u'version': u'14.04', u'name': u'Ubuntu'}
+print client.getResponse().getBodyData("vendor")
+# >> Ubuntu
+print client.getResponse().getBodyData("vendor.name")
+
+"""
+GET / HTTP/1.1
+Host: localhost:5984
+Connection: close
+Accept: application/json
+Content-Type: application/json
+User-Agent: Couch/v1.0.0 (+http://github.com/yay-couch/couch-js)
+
+
+HTTP/1.1 200 OK
+Server: CouchDB/1.5.0 (Erlang OTP/R16B03)
+Date: Fri, 13 Nov 2015 02:45:12 GMT
+Content-Type: application/json
+Content-Length: 127
+Cache-Control: must-revalidate
+
+{"couchdb":"Welcome","uuid":"5a660f4695a5fa9ab2cd22722bc01e96", ...
+"""
 ```
