@@ -75,13 +75,13 @@ print client.request("GET /")
 
 # shortcut methods that handle HEAD, GET, POST, PUT, COPY, DELETE
 # without body
-client.head(uri, uriParams={}, heaaders={})
-client.get(uri, uriParams={}, heaaders={})
-client.copy(uri, uriParams={}, heaaders={})
-client.delete(uri, uriParams={}, heaaders={})
+client.head(uri, uriParams={}, headers={})
+client.get(uri, uriParams={}, headers={})
+client.copy(uri, uriParams={}, headers={})
+client.delete(uri, uriParams={}, headers={})
 # with body
-client.put(uri, uriParams={}, body=None, heaaders={})
-client.post(uri, uriParams={}, body=None, heaaders={})
+client.put(uri, uriParams={}, body=None, headers={})
+client.post(uri, uriParams={}, body=None, headers={})
 
 # after request operations
 # request = client.getRequest()
