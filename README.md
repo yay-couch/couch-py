@@ -8,7 +8,7 @@ Notice: See CouchDB's official documents before using this library.
 
 ```python
 # create a fresh document
-var doc = Couch.Document(db);
+doc = Couch.Document(db);
 doc.name = "The Doc!";
 doc.save();
 
