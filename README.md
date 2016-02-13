@@ -105,7 +105,7 @@ server.getLogs(query)
 
 server.restart()
 server.replicate(query={"source": "foo", "target": "foo2",
-   "create_target": true})
+   "create_target": True})
 
 server.getStats(path="")
 server.getStats("/couchdb/request_time")
@@ -274,4 +274,36 @@ attc.remove()
 attc.toJson()
 attc.toArray()
 ```
+```
+
+### DocumentDesign Object
+
+```python
+# @todo
+```
+
+## Uuid
+
+```python
+# create uuid given value
+uuid = Couch.Uuid("my_uuid")
+# auto-generate using os.urandom() => 32 length hexed
+uuid = Couch.Uuid(True)
+
+# also setValue & getValue methods available
+uuid = Couch.Uuid()
+uuid.setValue("my_uuid")
+
+# print
+print uuid.toString()
+
+# generate method (default=HEX_32)
+uuidValue = Couch.Uuid.generate(limit)
+uuidValue = Couch.Uuid.generate(Couch.Uuid.HEX_40)
+
+# available limits
+HEX_8     = 8
+HEX_32    = 32
+HEX_40    = 40
+TIMESTAMP = 0
 ```
