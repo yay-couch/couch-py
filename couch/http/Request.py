@@ -33,7 +33,7 @@ class Request(Stream):
    @author Kerem Güneş <qeremy[at]gmail[dot]com>
    """
 
-   # Request methods
+   # Request methods.
    # @var str
    METHOD_HEAD   = "HEAD"
    METHOD_GET    = "GET"
@@ -50,7 +50,7 @@ class Request(Stream):
    # @var str
    method = None
 
-   # Request URI
+   # Request URI.
    # @var str
    uri = None
 
@@ -66,7 +66,7 @@ class Request(Stream):
 
       self.client = client
 
-      # reset headers (interesting for each "extends" operation..)
+      # reset headers (for each "extends" operation, interesting..)
       self.headers = {}
 
       # set default headers
