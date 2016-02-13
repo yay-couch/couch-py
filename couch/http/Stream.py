@@ -160,6 +160,14 @@ class Stream(object):
       """
       return self.error
 
+   def getErrorData(self):
+      """
+      Get error data.
+
+      @return {dict}
+      """
+      return self.errorData
+
    def toString(self, firstLine):
       """
       Get stream as string.
