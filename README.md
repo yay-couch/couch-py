@@ -306,3 +306,24 @@ HEX_32    = 32
 HEX_40    = 40
 TIMESTAMP = 0
 ```
+
+## Query
+
+```python
+# init query
+query = Couch.Query()
+# init query with data (params)
+query = Couch.Query({"foo": 1})
+
+# add params
+query.set("conflicts", true) \
+   .set("stale", "ok") \
+   .skip(1) \
+   .limit(2)
+
+# get as string
+print query.toString()
+
+# use it!
+db.getDocumentAll(query);
+```
