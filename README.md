@@ -372,7 +372,7 @@ Cache-Control: must-revalidate
 
 Couch will not throw any server response error, such as `409 Conflict` etc. It only throws library-related errors or wrong usages of the library (ie. when `_id` is required for some action but you did not provide it).
 
-```js
+```python
 # create issue
 doc = Couch.Document()
 doc._id = "an_existing_docid"
