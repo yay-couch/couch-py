@@ -20,10 +20,11 @@
 from setuptools import setup
 
 setup(
-   name        = "yay-couch",
-   description = "CouchDB Wrapper for Python.",
-   version     = "1.0.0",
-   license     = "Apache License Version 2.0",
-   author      = "Kerem Güneş <qeremy[at]gmail[dot]com>",
-   url         = "https://github.com/yay-couch/couch-py",
+   name         = "yay-couch",
+   description  = "CouchDB Wrapper for Python.",
+   version      = "1.0.0",
+   license      = "Apache License Version 2.0",
+   author       = "Kerem Güneş",
+   author_email = "<qeremy[at]gmail[dot]com>",
+   url          = "https://github.com/yay-couch/couch-py",
 )
