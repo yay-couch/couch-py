@@ -52,12 +52,12 @@ debug = True
 import couch as Couch
 
 # init couch object with default config
-couch = new Couch.Couch()
+couch = Couch.Couch()
 
 # init couch object with given config
-couch = new Couch.Couch(config, debug)
+couch = Couch.Couch(config, debug)
 
 # or set later but before streaming
-couch = new Couch.Couch()
+couch = Couch.Couch()
 couch.setConfig(config, debug)
 ```
