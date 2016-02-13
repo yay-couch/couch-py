@@ -164,21 +164,21 @@ db.createDocument({"name": "test"})
 
 # update a document
 doc = Couch.Document()
-doc._id = "e90636c398458a9d5969d2e71b04ad81"
-doc._rev = "3-9aeefae43b9fad5df8cc87fe8bcc2718"
+doc._id = "abc"
+doc._rev = "3-abc"
 # param as Couch.Document
 db.updateDocument(doc)
 # param as dict
 db.updateDocument({
-    "_id": "e90636c398458a9d5969d2e71b04b0a4",
-   "_rev": "1-afa338dcbc6870f1a1dd441557f79859",
+    "_id": "abc",
+   "_rev": "1-abc",
    "test": "test (update)"
 })
 
 # delete a document
 doc = Couch.Document(None, {
-    "_id": "e90636c398458a9d5969d2e71b04b0a4",
-   "_rev": "1-afa338dcbc6870f1a1dd441557f79859",
+    "_id": "abc",
+   "_rev": "1-abc",
 })
 db.deleteDocument(doc)
 
@@ -209,8 +209,8 @@ db.deleteDocumentAll(docs)
 ```python
 doc = Couch.Document(db)
 # set props (so data)
-doc._id = "e90636c398458a9d5969d2e71b04b2e4"
-doc._rev = "2-393dbbc2cca7eea546a3c750ebeddd70"
+doc._id = "abc"
+doc._rev = "2-abc"
 
 # checker method
 doc.ping(callback)
