@@ -84,6 +84,39 @@ client.put(uri, uriParams={}, body=None, heaaders={})
 client.post(uri, uriParams={}, body=None, heaaders={})
 
 # after request operations
-# request  = client.getRequest()
+# request = client.getRequest()
 # response = client.getResponse()
+```
+
+### Server Object
+
+```python
+server = Couch.Server(client)
+
+# methods
+server.ping()
+server.info(key)
+server.info("version")
+server.version()
+
+server.getActiveTasks()
+server.getAllDatabases()
+server.getDatabaseUpdates(query)
+server.getLogs(query)
+
+server.restart()
+server.replicate(query={"source": "foo", "target": "foo2",
+    "create_target": true})
+
+server.getStats(path="")
+server.getStats("/couchdb/request_time")
+
+server.getUuid()   # get one
+server.getUuids(3) # get three
+
+server.getConfig(section, key)
+server.getConfig("couchdb")
+server.getConfig("couchdb", "uuid")
+server.setConfig("couchdb", "foo", "the foo!")
+server.removeConfig("couchdb", "foo")
 ```
