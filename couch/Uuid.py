@@ -31,14 +31,14 @@ class Uuid():
    """
 
    # UUID limits.
-   # @const {int}
+   # @const int
    HEX_8     = 8
    HEX_32    = 32
    HEX_40    = 40
    TIMESTAMP = 0
 
    # UUID value.
-   # @var {str|int}
+   # @var str|int
    value = None
 
    def __init__(self, value = None):
