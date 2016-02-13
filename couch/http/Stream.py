@@ -60,7 +60,6 @@ class Stream(object):
       @param  {dict}  headers
       @param  {mixed} body
       """
-      # these are must be set each "extends" operation, interesting..
       self.headers = headers
       self.body    = body
 
