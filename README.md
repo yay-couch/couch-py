@@ -16,3 +16,9 @@ doc.save()
 doc.setAttachment(Couch.DocumentAttachment(doc, "./file.txt"))
 doc.save()
 ```
+
+## Install
+
+```shell
+git clone git@github.com:yay-couch/couch-py.git && cd couch-py && python setup.py install
+```
