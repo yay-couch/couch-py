@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2015 Kerem Güneş
-#    <http://qeremy.com>
+#    <k-gun@mail.com>
 #
 # Apache License, Version 2.0
 #    <http://www.apache.org/licenses/LICENSE-2.0>
@@ -27,7 +27,7 @@ class Uuid():
 
    @module couch
    @object couch.Uuid
-   @author Kerem Güneş <qeremy[at]gmail[dot]com>
+   @author Kerem Güneş <k-gun@mail.com>
    """
 
    # UUID limits.

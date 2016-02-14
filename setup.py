@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2015 Kerem Güneş
-#    <http://qeremy.com>
+#    <k-gun@mail.com>
 #
 # Apache License, Version 2.0
 #    <http://www.apache.org/licenses/LICENSE-2.0>
@@ -25,6 +25,6 @@ setup(
    version      = "1.0.0",
    license      = "Apache License Version 2.0",
    author       = "Kerem Güneş",
-   author_email = "<qeremy[at]gmail[dot]com>",
+   author_email = "<k-gun@mail.com>",
    url          = "https://github.com/yay-couch/couch-py",
 )

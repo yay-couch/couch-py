@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2015 Kerem Güneş
-#    <http://qeremy.com>
+#    <k-gun@mail.com>
 #
 # Apache License, Version 2.0
 #    <http://www.apache.org/licenses/LICENSE-2.0>
@@ -30,7 +30,7 @@ class Request(Stream):
 
    @module couch.http
    @object couch.http.Request
-   @author Kerem Güneş <qeremy[at]gmail[dot]com>
+   @author Kerem Güneş <k-gun@mail.com>
    """
 
    # Request methods.
@@ -74,7 +74,7 @@ class Request(Stream):
       self.headers["Connection"] = "close"
       self.headers["Accept"] = "application/json"
       self.headers["Content-Type"] = "application/json"
-      self.headers["User-Agent"] = "%s/v%s (+http://github.com/qeremy/couch-py)" % \
+      self.headers["User-Agent"] = "%s/v%s (+http://github.com/yay-couch/couch-py)" % \
          (couch.Couch.NAME, couch.Couch.VERSION)
 
       # set basic authorization header

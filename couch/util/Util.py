@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2015 Kerem Güneş
-#    <http://qeremy.com>
+#    <k-gun@mail.com>
 #
 # Apache License, Version 2.0
 #    <http://www.apache.org/licenses/LICENSE-2.0>
@@ -23,6 +23,14 @@ import pprint
 import subprocess
 import json, base64
 import urllib, urlparse
+
+"""
+Stream object.
+
+@module couch.util
+@object couch.util.Util
+@author Kerem Güneş <k-gun@mail.com>
+"""
 
 def pre(o):
    """
