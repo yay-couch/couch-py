@@ -30,13 +30,13 @@ Configuration is optional but you can provide all these options;
 ```python
 config = {}
 # default="localhost"
-config.host = "couchdb_host"
+config["host"] = "couchdb_host"
 # default=5984
-config.port = 1234
+config["port"] = 1234
 # default=""
-config.username = "couchdb_user"
+config["username"] = "couchdb_user"
 # default=""
-config.password = "************"
+config["password"] = "************"
 
 # this will dump whole request/response messages for each stream
 # default=False
