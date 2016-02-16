@@ -58,7 +58,7 @@ class Request(Stream):
       """
       Object constructor.
 
-      @param  {couch.Client} client
+      @param (couch.Client) client
       """
       self.type = Stream.TYPE_REQUEST
       self.httpVersion = "1.0"
@@ -86,7 +86,7 @@ class Request(Stream):
       """
       Set request method.
 
-      @param  {str} method
+      @param  (str) method
       @return {self}
       """
       self.method = method.upper()
@@ -101,7 +101,7 @@ class Request(Stream):
       """
       Set request URI.
 
-      @param  {str} method
+      @param  (str) method
       @return {self}
       """
       self.uri = uri
@@ -116,8 +116,8 @@ class Request(Stream):
       """
       Send.
 
-      @param  {str} method
-      @return {str}
+      @param  (str) method
+      @return (str)
       """
       url = util.urlParse(self.uri)
       sock, err = None, None
@@ -160,7 +160,7 @@ class Request(Stream):
       """
       Set body.
 
-      @param  {mixed} body
+      @param  (mixed) body
       """
       if (body != None
          and self.method != Request.METHOD_HEAD
@@ -177,7 +177,7 @@ class Request(Stream):
       """
       String wrap.
 
-      @return {str}
+      @return (str)
       """
       url = util.urlParse(self.uri)
 

@@ -34,28 +34,28 @@ class DocumentAttachment(object):
    document = None
 
    # Abstract file path & file name.
-   # @var {str}, {str}
+   # @var (str), (str)
    file, fileName = None, None
 
    # Attachment file contents, contents length.
-   # @var {int}, {int}
+   # @var (int), (int)
    data, dataLength = None, 0
 
    # Attachment mime.
-   # @var {str}
+   # @var (str)
    contentType = None
 
    # CouchDB file digest.
-   # @var {str}
+   # @var (str)
    digest = None
 
    def __init__(self, document = None, file = None, fileName = None):
       """
       Object constructor.
 
-      @param {couch.Document} document
-      @param {str}            file
-      @param {str}            fileName
+      @param (couch.Document) document
+      @param (str)            file
+      @param (str)            fileName
       """
       if document:
          self.setDocument(document)
@@ -68,10 +68,10 @@ class DocumentAttachment(object):
       """
       Setter for magic actions.
 
-      @param  {str} name
-      @param  {str} value
-      @return {None}
-      @raises {Exception}
+      @param  (str) name
+      @param  (str) value
+      @return (None)
+      @raises (Exception)
       """
       if not hasattr(self, name):
          raise Exception("`%s` property does not exists on this object!" % name)
@@ -87,9 +87,9 @@ class DocumentAttachment(object):
       """
       Getter for magic actions.
 
-      @param  {str} name
-      @return {mixed}
-      @raises {Exception}
+      @param  (str) name
+      @return (mixed)
+      @raises (Exception)
       """
       if not hasattr(self, name):
          raise Exception("`%s` property does not exists on this object!" % name)
@@ -100,9 +100,9 @@ class DocumentAttachment(object):
       """
       Set owner document.
 
-      @param  {couch.Document} document
-      @return {None}
-      @raises {Exception}
+      @param  (couch.Document) document
+      @return (None)
+      @raises (Exception)
       """
       if not isinstance(document, couch.Document):
          raise Exception("'document' arg must be instance of couch.Document")
@@ -113,7 +113,7 @@ class DocumentAttachment(object):
       """
       Get owner document.
 
-      @return {couch.Document}
+      @return (couch.Document)
       """
       return self.document
 
@@ -121,9 +121,9 @@ class DocumentAttachment(object):
       """
       Ping a document attachment.
 
-      @param  {int} *args Expected status code(s).
-      @return {bool}
-      @raises {Exception}
+      @param  (int) *args Expected status code(s).
+      @return (bool)
+      @raises (Exception)
       """
       if not self.document:
          raise Exception("Attachment document is not defined!")
@@ -153,8 +153,8 @@ class DocumentAttachment(object):
       """
       Find attachment.
 
-      @return {mixed|None}
-      @raises {Exception}
+      @return {mixed|(dict|None)
+      @raises (Exception)
       """
       if not self.document:
          raise Exception("Attachment document is not defined!")
@@ -200,8 +200,8 @@ class DocumentAttachment(object):
       """
       Save attachment.
 
-      @return {mixed}
-      @raises {Exception}
+      @return (mixed)
+      @raises (Exception)
       """
       if not self.document:
          raise Exception("Attachment document is not defined!")
@@ -234,10 +234,10 @@ class DocumentAttachment(object):
       """
       Remove attachment.
 
-      @param  {bool} batch
-      @param  {bool} fullCommit
-      @return {mixed}
-      @raises {Exception}
+      @param  (bool) batch
+      @param  (bool) fullCommit
+      @return (mixed)
+      @raises (Exception)
       """
       if not self.document:
          raise Exception("Attachment document is not defined!")
@@ -270,8 +270,8 @@ class DocumentAttachment(object):
       """
       Get attachment data as array that CouchDB expects.
 
-      @param  {bool} encode
-      @return {dict}
+      @param  (bool) encode
+      @return (dict)
       """
       # read file first
       self.readFile(encode)
@@ -285,8 +285,8 @@ class DocumentAttachment(object):
    def toJson(self, encode = True):
       """
       Get attachment data as json string that CouchDB expects.
-      @param  {bool} encode
-      @return {str}
+      @param  (bool) encode
+      @return (str)
       """
       return util.jsonEncode(self.toArray(encode))
 
@@ -294,9 +294,9 @@ class DocumentAttachment(object):
       """
       Read file contents, set attachment data, data length and content type.
 
-      @param  {bool} encode
-      @return {None}
-      @raises {Exception}
+      @param  (bool) encode
+      @return (None)
+      @raises (Exception)
       """
       if not self.file:
          raise Exception("Attachment file is empty!")

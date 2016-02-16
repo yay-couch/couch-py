@@ -36,8 +36,8 @@ def pre(o):
    """
    Pretty print.
 
-   @param  {mixed} o
-   @return {None}
+   @param  (mixed) o
+   @return (None)
    """
    pprint.pprint(o)
 
@@ -45,9 +45,9 @@ def prd(o, all = False):
    """
    Pretty dump.
 
-   @param  {object} o
-   @param  {bool}   all
-   @return {None}
+   @param  (object) o
+   @param  (bool)   all
+   @return (None)
    """
    name = o.__module__
    for attrName in dir(o):
@@ -62,9 +62,9 @@ def dig(key, array):
    """
    Dict/list exporter.
 
-   @param  {str}       key
-   @param  {dict|list} array
-   @return {mixed}
+   @param  (str)       key
+   @param  (dict|list) array
+   @return (mixed)
    """
    if key in array:
       return array[key]
@@ -81,8 +81,8 @@ def parseHeaders(headers):
    """
    Parse headers.
 
-   @param  {str} headers
-   @return {dict}
+   @param  (str) headers
+   @return (dict)
    """
    ret = {}
 
@@ -100,8 +100,8 @@ def jsonEncode(input):
    """
    JSON encode.
 
-   @param  {mixed} input
-   @return {str|None}
+   @param  (mixed) input
+   @return (str|None)
    """
    try:
       return json.dumps(input)
@@ -111,8 +111,8 @@ def jsonDecode(input):
    """
    JSON decode.
 
-   @param  {str} input
-   @return {mixed}
+   @param  (str) input
+   @return (mixed)
    """
    try:
       return json.loads(input)
@@ -122,8 +122,8 @@ def base64Encode(input):
    """
    Base64 encode.
 
-   @param  {str} input
-   @return {str|None}
+   @param  (str) input
+   @return (str|None)
    """
    try:
       return base64.b64encode(input)
@@ -133,8 +133,8 @@ def base64Decode(input):
    """
    Base64 decode.
 
-   @param  {str} input
-   @return {str|None}
+   @param  (str) input
+   @return (str|None)
    """
    try:
       return base64.b64decode(input)
@@ -144,8 +144,8 @@ def urlEncode(input):
    """
    URL encode.
 
-   @param  {str} input
-   @return {str}
+   @param  (str) input
+   @return (str)
    """
    # handle objects
    if hasattr(input, "__str__") and callable(input.__str__):
@@ -157,8 +157,8 @@ def urlDecode(input):
    """
    URL decode.
 
-   @param  {str} input
-   @return {str}
+   @param  (str) input
+   @return (str)
    """
    return urllib.unquote_plus(input)
 
@@ -166,8 +166,8 @@ def urlParse(url):
    """
    URL parse.
 
-   @param  {str} url
-   @return {urlparse.ParseResult|None}
+   @param  (str) url
+   @return {urlparse.ParseResult|(dict|None)
    """
    if not url:
       raise Exception("No valid URL given!")
@@ -189,8 +189,8 @@ def quote(input):
    """
    Quote (escaped quote).
 
-   @param  {str} input
-   @return {str}
+   @param  (str) input
+   @return (str)
    """
    return input.replace("\"", "%22")
 
@@ -198,8 +198,8 @@ def basename(path):
    """
    Get basename.
 
-   @param  {str} path
-   @return {str}
+   @param  (str) path
+   @return (str)
    """
    return os.path.basename(path)
 
@@ -207,8 +207,8 @@ def fileExists(file):
    """
    Check file exist.
 
-   @param  {str} file
-   @return {bool}
+   @param  (str) file
+   @return (bool)
    """
    return os.path.isfile(file)
 
@@ -216,9 +216,9 @@ def fileInfo(file):
    """
    Get file info.
 
-   @param  {str} file
-   @return {dict}
-   @raises {Exception}
+   @param  (str) file
+   @return (dict)
+   @raises (Exception)
    """
    if not fileExists(file):
       raise Exception("Given file does not exist! file: '%s'" % file)
@@ -254,10 +254,10 @@ def fileGetContents(file, offset = -1, maxlen = -1):
    """
    Get file contents.
 
-   @param  {str} file
-   @param  {int} offset
-   @param  {int} maxlen
-   @return {str}
+   @param  (str) file
+   @param  (int) offset
+   @param  (int) maxlen
+   @return (str)
    """
    if not fileExists(file):
       raise Exception("Given file does not exist! file: '%s'" % file)

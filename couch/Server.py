@@ -34,7 +34,7 @@ class Server():
       """
       Object constructor.
 
-      @param  {couch.Client} client
+      @param (couch.Client) client
       """
       self.client = client
 
@@ -50,8 +50,8 @@ class Server():
       """
       Get server info.
 
-      @param  {str} key
-      @return {mixed}
+      @param  (str) key
+      @return (mixed)
       """
       return self.client.get("/").getBodyData(key)
 
@@ -59,7 +59,7 @@ class Server():
       """
       Get server version.
 
-      @return {str}
+      @return (str)
       """
       return self.info("version")
 
@@ -67,7 +67,7 @@ class Server():
       """
       Get active tasks.
 
-      @return {list}
+      @return (list)
       """
       return self.client.get("/_active_tasks").getBodyData()
 
@@ -75,7 +75,7 @@ class Server():
       """
       Get all databases.
 
-      @return {list}
+      @return (list)
       """
       return self.client.get("/_all_dbs").getBodyData()
 
@@ -83,8 +83,8 @@ class Server():
       """
       Get database events.
 
-      @param  {dict} query
-      @return {dict}
+      @param  (dict) query
+      @return (dict)
       """
       return self.client.get("/_db_updates", query).getBodyData()
 
@@ -92,8 +92,8 @@ class Server():
       """
       Get server logs.
 
-      @param  {dict} query
-      @return {str}
+      @param  (dict) query
+      @return (str)
       """
       return self.client.get("/_log", query, {
          "Content-Type": None,
@@ -104,8 +104,8 @@ class Server():
       """
       Get server stats.
 
-      @param  {dict} query
-      @return {dict}
+      @param  (dict) query
+      @return (dict)
       """
       return self.client.get("/_stats/"+ path).getBodyData()
 
@@ -113,7 +113,7 @@ class Server():
       """
       Get a new uuid.
 
-      @return {str}
+      @return (str)
       """
       uuids = self.getUuids(1)
       if len(uuids):
@@ -123,8 +123,8 @@ class Server():
       """
       Get new uuid(s).
 
-      @param  {int} count
-      @return {list}
+      @param  (int) count
+      @return (list)
       """
       return self.client.get("/_uuids/", {"count": count}).getBodyData("uuids")
 
@@ -132,9 +132,9 @@ class Server():
       """
       Request, configure, or stop, a replication operation.
 
-      @param  {dict} query
-      @return {dict}
-      @raises {Exception}
+      @param  (dict) query
+      @return (dict)
+      @raises (Exception)
       """
       if "source" not in query or "target" not in query:
          raise Exception("Both source & target required!")
@@ -145,7 +145,7 @@ class Server():
       """
       Restarts the CouchDB instance.
 
-      @return {bool}
+      @return (bool)
       """
       return (202 == self.client.post("/_restart").getStatusCode())
 
@@ -153,9 +153,9 @@ class Server():
       """
       Get config(s).
 
-      @param  {str} section
-      @param  {str} key
-      @return {mixed}
+      @param  (str) section
+      @param  (str) key
+      @return (mixed)
       """
       path = "%s/%s" % (section, key)
 
@@ -165,10 +165,10 @@ class Server():
       """
       Set a config value.
 
-      @param  {str}   section
-      @param  {str}   key
-      @param  {mixed} value
-      @return {mixed}
+      @param  (str)   section
+      @param  (str)   key
+      @param  (mixed) value
+      @return (mixed)
       """
       path = "%s/%s" % (section, key)
       response = self.client.put("/_config/"+ path, None, value)
@@ -182,9 +182,9 @@ class Server():
       """
       Delete a config.
 
-      @param  {str} section
-      @param  {str} key
-      @return {mixed}
+      @param  (str) section
+      @param  (str) key
+      @return (mixed)
       """
       path = "%s/%s" % (section, key)
       response = self.client.delete("/_config/"+ path)

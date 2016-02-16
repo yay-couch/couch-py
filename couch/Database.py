@@ -40,9 +40,9 @@ class Database():
       """
       Object constructor.
 
-      @param  {couch.Client} client
-      @param  {str}          name
-      @raises {Exception}
+      @param  (couch.Client) client
+      @param  (str)          name
+      @raises (Exception)
       """
       if not isinstance(client, couch.Client):
          raise Exception("'client' arg must be instance of couch.Client")
@@ -54,7 +54,7 @@ class Database():
       """
       Ping database, expect 200 response code.
 
-      @return {bool}
+      @return (bool)
       """
       return (200 == self.client.head(self.name).getStatusCode())
 
@@ -62,8 +62,8 @@ class Database():
       """
       Get database info.
 
-      @param  {str|None} key
-      @return {mixed}
+      @param  (str|None) key
+      @return (mixed)
       """
       return self.client.get(self.name).getBodyData(key)
 
@@ -71,7 +71,7 @@ class Database():
       """
       Create a new database.
 
-      @return {bool}
+      @return (bool)
       """
       return (True == self.client.put(self.name).getBodyData("ok"))
 
@@ -79,7 +79,7 @@ class Database():
       """
       Remove database.
 
-      @return {bool}
+      @return (bool)
       """
       return (True == self.client.delete(self.name).getBodyData("ok"))
 
@@ -87,9 +87,9 @@ class Database():
       """
       Replicate database.
 
-      @param  {str}  target
-      @param  {bool} targetCreate
-      @return {mixed}
+      @param  (str)  target
+      @param  (bool) targetCreate
+      @return (mixed)
       """
       return self.client.post("/_replicate", None, {
          "source"       : self.name,
@@ -101,8 +101,8 @@ class Database():
       """
       Get a document by given key (docid).
 
-      @param  {str} key
-      @return {mixed}
+      @param  (str) key
+      @return (mixed)
       """
       data = self.client.get(self.name +"/_all_docs", {
          "include_docs": True,
@@ -118,9 +118,9 @@ class Database():
       Get all documents by given query options. If keys params provided, request for
       documents by given keys.
 
-      @param  {dict} query
-      @param  {list}  keys
-      @return {mixed}
+      @param  (dict) query
+      @param  (list)  keys
+      @return (mixed)
       """
       query = query or {}
       if "include_docs" not in query:
@@ -136,8 +136,8 @@ class Database():
       """
       Create a document.
 
-      @param  {mixed} document
-      @return {mixed|None}
+      @param  (mixed) document
+      @return {mixed|(dict|None)
       """
       data = self.createDocumentAll([document])
       try:
@@ -148,8 +148,8 @@ class Database():
       """
       Create multiple documents.
 
-      @param  {list} documents
-      @return {mixed}
+      @param  (list) documents
+      @return (mixed)
       """
       docs = []
       for document in documents:
@@ -169,9 +169,9 @@ class Database():
       """
       Update a document.
 
-      @param  {mixed} document
-      @return {mixed|None}
-      @raises {Exception}
+      @param  (mixed) document
+      @return {mixed|(dict|None)
+      @raises (Exception)
       """
       data = self.updateDocumentAll([document])
       try:
@@ -182,9 +182,9 @@ class Database():
       """
       Update multiple documents.
 
-      @param  {list} documents
-      @return {mixed}
-      @raises {Exception}
+      @param  (list) documents
+      @return (mixed)
+      @raises (Exception)
       """
       docs = []
       for document in documents:
@@ -204,9 +204,9 @@ class Database():
       """
       Delete a document.
 
-      @param  {mixed} document
-      @return {mixed|None}
-      @raises {Exception}
+      @param  (mixed) document
+      @return {mixed|(dict|None)
+      @raises (Exception)
       """
       data = self.deleteDocumentAll([document])
       try:
@@ -217,9 +217,9 @@ class Database():
       """
       Delete multiple documents.
 
-      @param  {list} documents
-      @return {mixed}
-      @raises {Exception}
+      @param  (list) documents
+      @return (mixed)
+      @raises (Exception)
       """
       docs = []
       for document in documents:
@@ -237,9 +237,9 @@ class Database():
       """
       Get database changes.
 
-      @param  {dict|None} query
-      @param  {list}      docIds
-      @return {mixed}
+      @param  (dict|None) query
+      @param  (list)      docIds
+      @return (mixed)
       """
       if not docIds:
          return self.client.get(self.name +"/_changes", query).getBodyData()
@@ -256,7 +256,7 @@ class Database():
       """
       Compact database.
 
-      @param  {str} ddoc
+      @param  (str) ddoc
       @return mixed
       """
       return self.client.post(self.name +"/_compact/"+ ddoc).getBodyData()
@@ -265,7 +265,7 @@ class Database():
       """
       Ensure full-commit.
 
-      @return {mixed}
+      @return (mixed)
       """
       return self.client.post(self.name +"/_ensure_full_commit").getBodyData()
 
@@ -273,7 +273,7 @@ class Database():
       """
       View cleanup, so remove unneded view index files.
 
-      @return {mixed}
+      @return (mixed)
       """
       return self.client.post(self.name +"/_view_cleanup").getBodyData()
 
@@ -281,9 +281,9 @@ class Database():
       """
       Create (and execute) a temporary view.
 
-      @param  {string}      map
-      @param  {string|None} reduce
-      @return {mixed}
+      @param  (string)      map
+      @param  (string|None) reduce
+      @return (mixed)
       """
       return self.client.post(self.name +"/_temp_view", None,
          {"map":map, "reduce":reduce}).getBodyData()
@@ -292,7 +292,7 @@ class Database():
       """
       Get the current security object of the database.
 
-      @return {mixed}
+      @return (mixed)
       """
       return self.client.get(self.name +"/_security").getBodyData()
 
@@ -300,10 +300,10 @@ class Database():
       """
       Set the security object for the database.
 
-      @param  {dict} admins
-      @param  {dict} members
-      @return {mixed}
-      @raises {Exception}
+      @param  (dict) admins
+      @param  (dict) members
+      @return (mixed)
+      @raises (Exception)
       """
       admins, members = admins or {}, members or {}
       if ("names" not in admins or "roles" not in admins
@@ -317,9 +317,9 @@ class Database():
       """
       Permanently remove the references to deleted documents from the database.
 
-      @param  {str}  docId
-      @param  {list} docRevs
-      @return {mixed}
+      @param  (str)  docId
+      @param  (list) docRevs
+      @return (mixed)
       """
       return self.client.post(self.name +"/_purge", None,
          {docId: docRevs}).getBodyData()
@@ -328,9 +328,9 @@ class Database():
       """
       Get the document revisions that do not exist in the database.
 
-      @param  {str}  docId
-      @param  {list} docRevs
-      @return {mixed}
+      @param  (str)  docId
+      @param  (list) docRevs
+      @return (mixed)
       """
       return self.client.post(self.name +"/_missing_revs", None,
          {docId: docRevs}).getBodyData()
@@ -339,9 +339,9 @@ class Database():
       """
       Get the subset of those that do not correspond to revisions stored in the database.
 
-      @param  {str}  docId
-      @param  {list} docRevs
-      @return {mixed}
+      @param  (str)  docId
+      @param  (list) docRevs
+      @return (mixed)
       """
       return self.client.post(self.name +"/_revs_diff", None,
          {docId: docRevs}).getBodyData()
@@ -350,7 +350,7 @@ class Database():
       """
       Get the current "revs_limit" (revision limit) setting.
 
-      @return {int}
+      @return (int)
       """
       return self.client.get(self.name +"/_revs_limit").getBodyData()
 
@@ -358,7 +358,7 @@ class Database():
       """
       Set the current "revs_limit" (revision limit) setting.
 
-      @param  {int} limit
-      @return {mixed}
+      @param  (int) limit
+      @return (mixed)
       """
       return self.client.put(self.name +"/_revs_limit", None, limit).getBodyData()

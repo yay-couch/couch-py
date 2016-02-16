@@ -45,7 +45,7 @@ class Uuid():
       """
       Object constructor.
 
-      @param {mixed} value
+      @param (mixed) value
       """
 
       # true is trigger for self.generate() method
@@ -58,7 +58,7 @@ class Uuid():
       """
       Alias of self.getValue() method.
 
-      @return {str|int}
+      @return (str|int)
       """
       return self.getValue()
 
@@ -66,8 +66,8 @@ class Uuid():
       """
       Set value.
 
-      @param  {str|int} value
-      @return {None}
+      @param  (str|int) value
+      @return (None)
       """
       self.value = value
 
@@ -75,7 +75,7 @@ class Uuid():
       """
       Get value.
 
-      @param {str|int} value
+      @param (str|int) value
       """
       return self.value
 
@@ -84,10 +84,10 @@ class Uuid():
       """
       Generate UUID.
 
-      @param  {int} limit
-      @return {str|int}
-      @raises {Exception}
-      @todo   Implement RFC-4122
+      @param  (int) limit
+      @return (str|int)
+      @raises (Exception)
+      @todo   Implement RFC-4122.
       """
 
       # simply unix timestamp

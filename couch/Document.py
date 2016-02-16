@@ -30,31 +30,31 @@ class Document(object):
    """
 
    # Document ID & document revision ID.
-   # @var {str}, {str}
+   # @var str, str
    id, rev = None, None
 
    # Delete(d) flag.
-   # @var {bool}
+   # @var (bool
    deleted = False
 
    # Document attachments.
-   # @var {dict}
+   # @var dict
    attachments = {}
 
    # Database object.
-   # @var {couch.Database}
+   # @var couch.Database
    database = None
 
    # Document data.
-   # @var {dict}
+   # @var dict
    data = {}
 
    def __init__(self, database = None, data = {}):
       """
       Object constructor.
 
-      @param  {couch.Database} database
-      @param  {dict}           data
+      @param  (couch.Database) database
+      @param  (dict)           data
       """
       if database:
          self.setDatabase(database)
@@ -66,9 +66,9 @@ class Document(object):
       """
       Setter method for magic actions.
 
-      @param  {str}   key
-      @param  {mixed} value
-      @return {None}
+      @param  (str)   key
+      @param  (mixed) value
+      @return (None)
       """
       self.setData({key: value})
 
@@ -76,8 +76,8 @@ class Document(object):
       """
       Getter method for magic actions.
 
-      @param  {str} key
-      @return {mixed}
+      @param  (str) key
+      @return (mixed)
       """
       return self.getData(key)
 
@@ -85,9 +85,9 @@ class Document(object):
       """
       Set document database.
 
-      @param  {couch.Database} database
-      @return {None}
-      @raises {Exception}
+      @param  (couch.Database) database
+      @return (None)
+      @raises (Exception)
       """
       if not isinstance(database, couch.Database):
          raise Exception("'database' arg must be instance of couch.Database")
@@ -98,7 +98,7 @@ class Document(object):
       """
       Get document database.
 
-      @return {couch.Database}
+      @return (couch.Database)
       """
       return self.database
 
@@ -106,8 +106,8 @@ class Document(object):
       """
       Set document ID.
 
-      @param  {couch.Uuid|str} id
-      @return {None}
+      @param  (couch.Uuid|str) id
+      @return (None)
       """
       if not isinstance(id, couch.Uuid):
          id = couch.Uuid(id)
@@ -118,8 +118,8 @@ class Document(object):
       """
       Set document revision ID.
 
-      @param  {str} rev
-      @return {None}
+      @param  (str) rev
+      @return (None)
       """
       super.__setattr__(self, "rev", rev)
 
@@ -127,8 +127,8 @@ class Document(object):
       """
       Set deleted flag.
 
-      @param  {bool} deleted
-      @return {None}
+      @param  (bool) deleted
+      @return (None)
       """
       super.__setattr__(self, "deleted", bool(deleted))
 
@@ -136,7 +136,7 @@ class Document(object):
       """
       Get document ID.
 
-      @return {couch.Uuid|str|None}
+      @return {couch.Uuid|str|(dict|None)
       """
       return self.id
 
@@ -144,7 +144,7 @@ class Document(object):
       """
       Get document revision ID.
 
-      @return {str|None}
+      @return (str|None)
       """
       return self.rev
 
@@ -152,7 +152,7 @@ class Document(object):
       """
       Get deleted flag.
 
-      @return {bool}
+      @return (bool)
       """
       return self.deleted
 
@@ -160,9 +160,9 @@ class Document(object):
       """
       Add an attachment to document object.
 
-      @param  {couch.DocumentAttachment|dict} attachment
-      @return {None}
-      @raises {Exception}
+      @param  (couch.DocumentAttachment|dict) attachment
+      @return (None)
+      @raises (Exception)
       """
       if not isinstance(attachment, couch.Attachment):
          if "file" not in attachment:
@@ -186,8 +186,8 @@ class Document(object):
       """
       Get a document attachment by name.
 
-      @param  {str} name
-      @return {couch.DocumentAttachment|None}
+      @param  (str) name
+      @return {couch.DocumentAttachment|(dict|None)
       """
       if name in self.attachments[name]:
          return self.attachments[name]
@@ -196,7 +196,7 @@ class Document(object):
       """
       Get all attachments.
 
-      @return {dict}
+      @return (dict)
       """
       return self.attachments
 
@@ -204,8 +204,8 @@ class Document(object):
       """
       Unset an attachment.
 
-      @param  {str} name
-      @return {None}
+      @param  (str) name
+      @return (None)
       """
       if name in self.attachments[name]:
          del self.attachments[name]
@@ -214,7 +214,7 @@ class Document(object):
       """
       Dump all document attachments.
 
-      @return {None}
+      @return (None)
       """
       self.attachments = {}
 
@@ -222,8 +222,8 @@ class Document(object):
       """
       Set document data.
 
-      @param  {dict} data
-      @return {None}
+      @param  (dict) data
+      @return (None)
       """
       # set special properties
       if "_id" in data: self.setId(data["_id"])
@@ -243,8 +243,8 @@ class Document(object):
       """
       Get document data value.
 
-      @param  {str} key
-      @return {mixed}
+      @param  (str) key
+      @return (mixed)
       """
       if key != None:
          return util.dig(key, self.data)
@@ -255,9 +255,9 @@ class Document(object):
       """
       Ping document.
 
-      @param  {int} *args Expected status code(s).
-      @return {bool}
-      @raises {Exception}
+      @param  (int) *args Expected status code(s).
+      @return (bool)
+      @raises (Exception)
       """
       if not self.id:
          raise Exception("_id field is could not be empty!")
@@ -283,8 +283,8 @@ class Document(object):
       """
       Check document if not modified.
 
-      @return {bool}
-      @raises {Exception}
+      @return (bool)
+      @raises (Exception)
       """
       if not self.rev:
          raise Exception("_rev field could not be empty!")
@@ -295,9 +295,9 @@ class Document(object):
       """
       Find a document.
 
-      @param  {dict} query
-      @return {mixed}
-      @raises {Exception}
+      @param  (dict) query
+      @return (mixed)
+      @raises (Exception)
       """
       if not self.id:
          raise Exception("_id field is could not be empty!")
@@ -313,7 +313,7 @@ class Document(object):
       """
       Find a document's revisions.
 
-      @return {dict|None}
+      @return (dict|None)
       """
       return util.dig("_revisions", self.find({"revs": True}))
 
@@ -321,7 +321,7 @@ class Document(object):
       """
       Find a document's revisions as extended result.
 
-      @return {dict|None}
+      @return (dict|None)
       """
       return util.dig("_revs_info", self.find({"revs_info": True}))
 
@@ -329,9 +329,9 @@ class Document(object):
       """
       Find a document's attachments.
 
-      @param  {bool}      attEncInfo
-      @param  {dict|None} attsSince
-      @return {dict|None}
+      @param  (bool)      attEncInfo
+      @param  (dict|None) attsSince
+      @return (dict|None)
       """
       query = {}
       query["attachments"] = True
@@ -349,9 +349,9 @@ class Document(object):
       """
       Create or update a document.
 
-      @param  {bool} batch
-      @param  {bool} fullCommit
-      @return {mixed}
+      @param  (bool) batch
+      @param  (bool) fullCommit
+      @return (mixed)
       """
       batch = "?batch=ok" if batch else ""
 
@@ -388,10 +388,10 @@ class Document(object):
       """
       Remove a document.
 
-      @param  {bool} batch
-      @param  {bool} fullCommit
-      @return {mixed}
-      @raises {Exception}
+      @param  (bool) batch
+      @param  (bool) fullCommit
+      @return (mixed)
+      @raises (Exception)
       """
       if not self.id and not self.rev:
          raise Exception("Both _id & _rev fields could not be empty!")
@@ -410,11 +410,11 @@ class Document(object):
       """
       Copy a document to a destination.
 
-      @param  {str}  dest
-      @param  {bool} batch
-      @param  {bool} fullCommit
-      @return {mixed}
-      @raises {Exception}
+      @param  (str)  dest
+      @param  (bool) batch
+      @param  (bool) fullCommit
+      @return (mixed)
+      @raises (Exception)
       """
       if not self.id:
          raise Exception("_id field could not be empty!")
@@ -436,11 +436,11 @@ class Document(object):
       """
       Copy a (this) document to a destination with a specific revision.
 
-      @param  {str}  dest
-      @param  {bool} batch
-      @param  {bool} fullCommit
-      @return {mixed}
-      @raises {Exception}
+      @param  (str)  dest
+      @param  (bool) batch
+      @param  (bool) fullCommit
+      @return (mixed)
+      @raises (Exception)
       """
       if not self.id or not self.rev:
          raise Exception("Both _id & _rev fields could not be empty!")
@@ -463,12 +463,12 @@ class Document(object):
       """
       Copy a (this) document to an existing document.
 
-      @param  {str}  dest
-      @param  {str}  destRev
-      @param  {bool} batch
-      @param  {bool} fullCommit
-      @return {mixed}
-      @raises {Exception}
+      @param  (str)  dest
+      @param  (str)  destRev
+      @param  (bool) batch
+      @param  (bool) fullCommit
+      @return (mixed)
+      @raises (Exception)
       """
       if not self.id or not self.rev:
          raise Exception("Both _id & _rev fields could not be empty!")

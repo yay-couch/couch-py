@@ -57,8 +57,8 @@ class Stream(object):
       """
       Object constructor.
 
-      @param  {dict}  headers
-      @param  {mixed} body
+      @param  (dict)  headers
+      @param  (mixed) body
       """
       self.headers = headers
       self.body    = body
@@ -67,7 +67,7 @@ class Stream(object):
       """
       String wrap.
 
-      @return {str}
+      @return (str)
       """
       return self.toString()
 
@@ -75,8 +75,8 @@ class Stream(object):
       """
       Set body.
 
-      @return {str}
-      @raises {Exception}
+      @return (str)
+      @raises (Exception)
       @abstract
       """
       if self.__class__.__name__ == "Stream":
@@ -86,7 +86,7 @@ class Stream(object):
       """
       Get body
 
-      @return {str}
+      @return (str)
       """
       return self.body
 
@@ -94,7 +94,7 @@ class Stream(object):
       """
       Get body data (parsed).
 
-      @param  {str} key
+      @param  (str) key
       """
       bodyData = {}
       # should parsed?
@@ -109,9 +109,9 @@ class Stream(object):
       """
       Set header.
 
-      @param  {str} key
-      @param  {str} value
-      @return {None}
+      @param  (str) key
+      @param  (str) value
+      @return (None)
       """
       # None = delete
       if value == None:
@@ -124,8 +124,8 @@ class Stream(object):
       """
       Get header.
 
-      @param  {str} key
-      @return {mixed}
+      @param  (str) key
+      @return (mixed)
       """
       if key in self.headers:
          return self.headers[key]
@@ -134,7 +134,7 @@ class Stream(object):
       """
       Get all headers.
 
-      @return {dict}
+      @return (dict)
       """
       return self.headers
 
@@ -142,8 +142,8 @@ class Stream(object):
       """
       Set error.
 
-      @param  {mixed} body
-      @return {None}
+      @param  (mixed) body
+      @return (None)
       """
       body = util.jsonDecode(body or self.body or "")
       if type(body) is dict and ("error" in body) and ("reason" in body):
@@ -156,7 +156,7 @@ class Stream(object):
       """
       Get error.
 
-      @return {dict}
+      @return (dict)
       """
       return self.error
 
@@ -164,7 +164,7 @@ class Stream(object):
       """
       Get error data.
 
-      @return {dict}
+      @return (dict)
       """
       return self.errorData
 
@@ -172,8 +172,8 @@ class Stream(object):
       """
       Get stream as string.
 
-      @param  {str} firstLine
-      @return {str}
+      @param  (str) firstLine
+      @return (str)
       """
       ret = firstLine
       for key, value in self.headers.items():

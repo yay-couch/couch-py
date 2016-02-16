@@ -37,7 +37,7 @@ class Query():
       """
       Object constructor.
 
-      @param {dict} data
+      @param (dict) data
       """
       if data:
          self.data = data
@@ -46,8 +46,8 @@ class Query():
       """
       Set query param.
 
-      @param  {str}   key
-      @param  {mixed} value
+      @param  (str)   key
+      @param  (mixed) value
       @return {self}
       """
       self.data[key.lower()] = value
@@ -58,8 +58,8 @@ class Query():
       """
       Get query param.
 
-      @param  {str} key
-      @return {mixed}
+      @param  (str) key
+      @return (mixed)
       """
       if key in self.data:
          return self.data[key]
@@ -68,7 +68,7 @@ class Query():
       """
       Get query params as list.
 
-      @return {list}
+      @return (list)
       """
       return self.data
 
@@ -76,7 +76,7 @@ class Query():
       """
       Get query params as string.
 
-      @return {str}
+      @return (str)
       """
 
       # check if already generated before
@@ -106,7 +106,7 @@ class Query():
       """
       Add skip param to query data.
 
-      @param {int} num
+      @param (int) num
       """
       self.data["skip"] = num
 
@@ -116,7 +116,7 @@ class Query():
       """
       Add limit param to query data.
 
-      @param {int} num
+      @param (int) num
       """
       self.data["limit"] = num
 

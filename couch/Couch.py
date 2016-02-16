@@ -46,8 +46,8 @@ class Couch():
       """
       Object constructor.
 
-      @param  {dict} config
-      @param  {bool} debug
+      @param  (dict) config
+      @param  (bool) debug
       """
       # check debug option
       if "debug" not in config:
@@ -62,8 +62,8 @@ class Couch():
       """
       Set config.
 
-      @param  {dict} config
-      @return {None}
+      @param  (dict) config
+      @return (None)
       """
       if config:
          for i in config:
@@ -73,6 +73,6 @@ class Couch():
       """
       Get config.
 
-      @return {dict}
+      @return (dict)
       """
       return self.config

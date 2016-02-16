@@ -55,7 +55,7 @@ class Client():
       """
       Object constructor.
 
-      @param {couch.Couch} couch
+      @param (couch.Couch) couch
       """
       self.couch = couch
 
@@ -78,7 +78,7 @@ class Client():
       """
       Get Request object.
 
-      @return {couch.http.Request}
+      @return (couch.http.Request)
       """
       return self.Request
 
@@ -86,7 +86,7 @@ class Client():
       """
       Get Response object.
 
-      @return {couch.http.Response}
+      @return (couch.http.Response)
       """
       return self.Response
 
@@ -94,12 +94,12 @@ class Client():
       """
       Make a HTTP request using Request and return Response.
 
-      @param  {str}   uri
-      @param  {dict}  uriParams
-      @param  {mixed} body
-      @param  {dict}  headers
-      @return {couch.http.Response}
-      @throws {Exception}
+      @param  (str)   uri
+      @param  (dict)  uriParams
+      @param  (mixed) body
+      @param  (dict)  headers
+      @return (couch.http.Response)
+      @throws (Exception)
       """
       # match for a valid request i.e: HEAD /foo
       r = re.match("^([A-Z]+)\s+(/.*)", uri)
@@ -148,11 +148,11 @@ class Client():
       """
       Make a HEAD request (i.e HEAD /foo).
 
-      @param  {str}  uri
-      @param  {dict} uriParams
-      @param  {dict} headers
-      @return {couch.http.Response}
-      @throws {Exception}
+      @param  (str)  uri
+      @param  (dict) uriParams
+      @param  (dict) headers
+      @return (couch.http.Response)
+      @throws (Exception)
       """
       return self.request(Request.METHOD_HEAD +" /"+ uri, uriParams, None, headers)
 
@@ -160,11 +160,11 @@ class Client():
       """
       Make a GET request (i.e GET /foo).
 
-      @param  {str}  uri
-      @param  {dict} uriParams
-      @param  {dict} headers
-      @return {couch.http.Response}
-      @throws {Exception}
+      @param  (str)  uri
+      @param  (dict) uriParams
+      @param  (dict) headers
+      @return (couch.http.Response)
+      @throws (Exception)
       """
       return self.request(Request.METHOD_GET +" /"+ uri, uriParams, None, headers)
 
@@ -172,12 +172,12 @@ class Client():
       """
       Make a POST request (i.e POST /foo).
 
-      @param  {str}   uri
-      @param  {dict}  uriParams
-      @param  {mixed} body
-      @param  {dict}  headers
-      @return {couch.http.Response}
-      @throws {Exception}
+      @param  (str)   uri
+      @param  (dict)  uriParams
+      @param  (mixed) body
+      @param  (dict)  headers
+      @return (couch.http.Response)
+      @throws (Exception)
       """
       return self.request(Request.METHOD_POST +" /"+ uri, uriParams, body, headers)
 
@@ -185,12 +185,12 @@ class Client():
       """
       Make a PUT request (i.e PUT /foo).
 
-      @param  {str}   uri
-      @param  {dict}  uriParams
-      @param  {mixed} body
-      @param  {dict}  headers
-      @return {couch.http.Response}
-      @throws {Exception}
+      @param  (str)   uri
+      @param  (dict)  uriParams
+      @param  (mixed) body
+      @param  (dict)  headers
+      @return (couch.http.Response)
+      @throws (Exception)
       """
       return self.request(Request.METHOD_PUT +" /"+ uri, uriParams, body, headers)
 
@@ -198,11 +198,11 @@ class Client():
       """
       Make a DELETE request (i.e DELETE /foo).
 
-      @param  {str}  uri
-      @param  {dict} uriParams
-      @param  {dict} headers
-      @return {couch.http.Response}
-      @throws {Exception}
+      @param  (str)  uri
+      @param  (dict) uriParams
+      @param  (dict) headers
+      @return (couch.http.Response)
+      @throws (Exception)
       """
       return self.request(Request.METHOD_DELETE +" /"+ uri, uriParams, None, headers)
 
@@ -210,10 +210,10 @@ class Client():
       """
       Make a COPY request (i.e COPY /foo).
 
-      @param  {str}  uri
-      @param  {dict} uriParams
-      @param  {dict} headers
-      @return {couch.http.Response}
-      @throws {Exception}
+      @param  (str)  uri
+      @param  (dict) uriParams
+      @param  (dict) headers
+      @return (couch.http.Response)
+      @throws (Exception)
       """
       return self.request(Request.METHOD_COPY +" /"+ uri, uriParams, None, headers)

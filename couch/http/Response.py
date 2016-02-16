@@ -76,8 +76,8 @@ class Response(Stream):
       """
       Set status.
 
-      @param  {str} status
-      @return {None}
+      @param  (str) status
+      @return (None)
       """
       r = re.match("^HTTP/(\d+\.\d+)\s+(\d+)\s+(.+)", status)
       if not r:
@@ -95,8 +95,8 @@ class Response(Stream):
       """
       Set status code.
 
-      @param  {int} statusCode
-      @return {None}
+      @param  (int) statusCode
+      @return (None)
       """
       self.statusCode = int(statusCode)
 
@@ -104,8 +104,8 @@ class Response(Stream):
       """
       Set status text.
 
-      @param  {str} statusText
-      @return {None}
+      @param  (str) statusText
+      @return (None)
       """
       self.statusText = statusText.strip()
 
@@ -113,7 +113,7 @@ class Response(Stream):
       """
       Get status.
 
-      @return {str}
+      @return (str)
       """
       return self.status
 
@@ -121,7 +121,7 @@ class Response(Stream):
       """
       Get status code.
 
-      @return {int}
+      @return (int)
       """
       return self.statusCode
 
@@ -129,7 +129,7 @@ class Response(Stream):
       """
       Get status text.
 
-      @return {str}
+      @return (str)
       """
       return self.statusText
 
@@ -137,8 +137,8 @@ class Response(Stream):
       """
       Set body.
 
-      @param  {str} body
-      @return {None}
+      @param  (str) body
+      @return (None)
       """
       if body != None:
          self.body = body
@@ -147,7 +147,7 @@ class Response(Stream):
       """
       String wrap.
 
-      @return {str}
+      @return (str)
       """
       return super(Response, self).toString(
          "HTTP/%s %s %s\r\n" % (self.httpVersion, self.statusCode, self.statusText))
