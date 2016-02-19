@@ -139,7 +139,7 @@ class Client():
          self.Response.setBody(body)
 
       # is error?
-      if self.Response.getStatusCode() >= 200:
+      if self.Response.getStatusCode() >= 400:
          self.Response.setError()
 
       return self.Response
