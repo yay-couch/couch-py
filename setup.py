@@ -22,7 +22,7 @@ from setuptools import setup
 setup(
    name         = "yay-couch",
    description  = "CouchDB Wrapper for Python.",
-   version      = "1.0.0",
+   version      = "1.0.1",
    license      = "Apache License Version 2.0",
    author       = "Kerem Güneş",
    author_email = "<k-gun@mail.com>",
