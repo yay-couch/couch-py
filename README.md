@@ -19,7 +19,7 @@ doc.save()
 
 ## Install
 
-```shell
+```
 ~$ git clone git@github.com:yay-couch/couch-py.git \
    && cd couch-py && python setup.py install
 ```
