@@ -60,7 +60,7 @@ couch = Couch.Couch(config, debug)
 
 # or set later but before streaming
 couch = Couch.Couch()
-couch.setConfig(config, debug)
+couch.setConfig(config)
 ```
 
 ### Client Object
