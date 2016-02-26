@@ -137,7 +137,7 @@ class Database():
       Create a document.
 
       @param  (mixed) document
-      @return {mixed|(dict|None)
+      @return (mixed|dict|None)
       """
       data = self.createDocumentAll([document])
       try:
@@ -170,7 +170,7 @@ class Database():
       Update a document.
 
       @param  (mixed) document
-      @return {mixed|(dict|None)
+      @return (mixed|dict|None)
       @raises (Exception)
       """
       data = self.updateDocumentAll([document])
@@ -205,7 +205,7 @@ class Database():
       Delete a document.
 
       @param  (mixed) document
-      @return {mixed|(dict|None)
+      @return (mixed|dict|None)
       @raises (Exception)
       """
       data = self.deleteDocumentAll([document])
