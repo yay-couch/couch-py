@@ -18,9 +18,10 @@
 # limitations under the License.
 
 import re
+
+import couch.util.Util as util
 import couch.http.Request as Request
 import couch.http.Response as Response
-import couch.util.Util as util
 
 class Client():
    """
