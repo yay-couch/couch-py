@@ -167,7 +167,7 @@ def urlParse(url):
    URL parse.
 
    @param  (str) url
-   @return {urlparse.ParseResult|(dict|None)
+   @return (urlparse.ParseResult|dict|None)
    """
    if not url:
       raise Exception("No valid URL given!")
