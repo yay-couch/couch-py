@@ -136,7 +136,7 @@ class Document(object):
       """
       Get document ID.
 
-      @return {couch.Uuid|str|(dict|None)
+      @return (couch.Uuid|str|dict|None)
       """
       return self.id
 
@@ -187,7 +187,7 @@ class Document(object):
       Get a document attachment by name.
 
       @param  (str) name
-      @return {couch.DocumentAttachment|(dict|None)
+      @return (couch.DocumentAttachment|dict|None)
       """
       if name in self.attachments[name]:
          return self.attachments[name]
