@@ -153,7 +153,7 @@ class DocumentAttachment(object):
       """
       Find attachment.
 
-      @return {mixed|(dict|None)
+      @return (mixed|dict|None)
       @raises (Exception)
       """
       if not self.document:
