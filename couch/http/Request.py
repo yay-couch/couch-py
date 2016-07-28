@@ -161,6 +161,7 @@ class Request(Stream):
       Set body.
 
       @param  (mixed) body
+      @return (self)
       """
       if (body != None
          and self.method != Request.METHOD_HEAD
@@ -171,6 +172,7 @@ class Request(Stream):
 
          self.body = body
          self.headers["Content-Length"] = len(body)
+
       return self
 
    def toString(self):
