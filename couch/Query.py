@@ -48,7 +48,7 @@ class Query():
 
       @param  (str)   key
       @param  (mixed) value
-      @return {self}
+      @return (self)
       """
       self.data[key.lower()] = value
 

@@ -87,7 +87,7 @@ class Request(Stream):
       Set request method.
 
       @param  (str) method
-      @return {self}
+      @return (self)
       """
       self.method = method.upper()
       if (self.method != Request.METHOD_HEAD
@@ -102,7 +102,7 @@ class Request(Stream):
       Set request URI.
 
       @param  (str) method
-      @return {self}
+      @return (self)
       """
       self.uri = uri
       if uriParams:
