@@ -140,7 +140,6 @@ class Request(Stream):
             if buff == "": # eof
                break
             recv += buff
-
       except Exception as e:
          err = e
       finally:
