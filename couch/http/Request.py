@@ -137,7 +137,7 @@ class Request(Stream):
          sock.sendall(send)
          while True:
             buff = sock.recv(1024)
-            if buff == "": # eof
+            if not buff: # eof
                break
             recv += buff
       except Exception as e:
