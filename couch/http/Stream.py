@@ -180,7 +180,6 @@ class Stream(object):
          if value != None:
             if key == "0":
                continue
-
             ret += "%s: %s\r\n" % (key, value)
 
       ret += "\r\n"
