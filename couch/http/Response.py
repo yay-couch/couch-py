@@ -62,6 +62,7 @@ class Response(Stream):
    # Response status text.
    # @var str
    statusText = ""
+
    def __init__(self):
       """
       Object constructor.
