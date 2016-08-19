@@ -177,9 +177,7 @@ class Stream(object):
       """
       ret = firstLine
       for key, value in self.headers.items():
-         if value != None:
-            if key == "0":
-               continue
+         if value != None and key != "0":
             ret += "%s: %s\r\n" % (key, value)
 
       ret += "\r\n"
