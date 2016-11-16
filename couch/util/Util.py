@@ -180,14 +180,7 @@ def urlParse(url):
    if not re.match("^https?://", url):
       url = "http://"+ url
 
-   try:
-      ret = urlparse.urlparse(url)
-      # dear "urlparse" developer(s), please see the link below..
-      # https://tools.ietf.org/html/rfc3986#section-3.2.2
-      ret.host = ret.hostname
-
-      return ret
-   except: pass
+   return urlparse.urlparse(url)
 
 def quote(input):
    """
