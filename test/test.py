@@ -12,7 +12,7 @@ client = Couch.Client(couch)
 # print(client.getRequest().toString())
 # print(client.getResponse().toString())
 
-response = client.get("/?a=1")
+# response = client.get("/?a=1")
 # print(response.getBody())
 # print(response.getBodyData())
 # print(response.getBodyData("uuid"))
@@ -77,7 +77,7 @@ doc = Couch.Document(database)
 # doc._id = "0f1eb3ba90772b64aee2f44b3c00055b"
 # doc._rev = "1-3c92d3e67136c8b206d90ea37a3ee76d"
 # doc.type = "py_test"
-prd(doc)
+# prd(doc)
 
 # print(doc.ping())
 # print(doc.isExists())
