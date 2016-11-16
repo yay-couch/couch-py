@@ -17,7 +17,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from urllib import quote_plus
+try:
+   from urllib import quote_plus
+except:
+   from urllib.parse import quote_plus
 
 class Query():
    """
