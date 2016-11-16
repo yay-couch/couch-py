@@ -134,12 +134,16 @@ class Request(Stream):
       try:
          sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
          sock.connect((self.client.host, self.client.port))
-         sock.sendall(send)
+         try:
+            sock.sendall(send)
+         except:
+            sock.sendall(bytes(send, "utf8"))
+
          while True:
             buff = sock.recv(1024)
             if not buff: # eof
                break
-            recv += buff
+            recv += str(buff, "utf8")
       except Exception as e:
          err = e
       finally:
