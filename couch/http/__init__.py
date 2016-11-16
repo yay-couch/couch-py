@@ -17,6 +17,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from Stream import Stream
-from Request import Request
-from Response import Response
+from . Stream import Stream
+from . Request import Request
+from . Response import Response
