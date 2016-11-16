@@ -148,8 +148,8 @@ class Request(Stream):
 
       # dump whole http messages (request/response)
       if self.client.couch.DEBUG == True:
-         print send
-         print recv
+         print(send)
+         print(recv)
          if err:
             raise err
 
