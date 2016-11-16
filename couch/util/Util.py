@@ -22,7 +22,11 @@ import re
 import pprint
 import subprocess
 import json, base64
-import urllib, urlparse
+try:
+   import urllib, urlparse
+except: # v3
+   import urllib, urllib.parse as urlparse
+   from urllib.parse import quote_plus, unquote_plus
 
 """
 Stream object.
