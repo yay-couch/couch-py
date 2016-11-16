@@ -22,7 +22,7 @@ import socket
 import couch
 import couch.util.Util as util
 
-from Stream import Stream
+from . Stream import Stream
 
 class Request(Stream):
    """
