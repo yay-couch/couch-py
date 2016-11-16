@@ -54,9 +54,9 @@ def prd(o, all = False):
       # show only attrs
       attrValue = getattr(o, attrName)
       if all == False and not hasattr(attrValue, '__call__'):
-         print "<%s>.%s = %s" % (name, attrName, attrValue)
+         print("<%s>.%s = %s" % (name, attrName, attrValue))
       elif all == True:
-         print "<%s>.%s = %s" % (name, attrName, attrValue)
+         print("<%s>.%s = %s" % (name, attrName, attrValue))
 
 def dig(key, array):
    """

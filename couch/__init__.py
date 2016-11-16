@@ -17,12 +17,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from Couch import Couch
-from Client import Client
-from Server import Server
-from Database import Database
-from Document import Document
-from DocumentAttachment import DocumentAttachment
-from DocumentDesign import DocumentDesign
-from Uuid import Uuid
-from Query import Query
+from .Couch import Couch
+from .Client import Client
+from .Server import Server
+from .Database import Database
+from .Document import Document
+from .DocumentAttachment import DocumentAttachment
+from .DocumentDesign import DocumentDesign
+from .Uuid import Uuid
+from .Query import Query
