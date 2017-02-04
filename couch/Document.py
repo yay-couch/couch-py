@@ -177,7 +177,7 @@ class Document(object):
 
       # check if attachment is duplicate
       if attachment.fileName in self.data["_attachments"]:
-         raise Exception("Attachment is alredy exists on this document!")
+         raise Exception("Attachment is already exists on this document!")
 
       self.attachments[attachment.fileName] = \
          self.data["_attachments"][attachment.fileName] = attachment
